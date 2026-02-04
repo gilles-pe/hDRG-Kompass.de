@@ -253,6 +253,20 @@
   backdrop-filter: blur(10px);
 }
 
+.fach-hero .hero-photo {
+  min-height: 360px;
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: 70% 50%;
+}
+
+@media (max-width: 900px) {
+  .fach-hero .hero-photo {
+    min-height: 260px;
+    background-position: 50% 50%;
+  }
+}
+
 .photo-room {
   background-image: linear-gradient(135deg, rgba(15, 93, 100, 0.22), rgba(42, 169, 160, 0.12)),
     url('Computer.jpg');
