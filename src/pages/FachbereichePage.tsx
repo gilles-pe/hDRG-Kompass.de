@@ -552,8 +552,7 @@ function FachbereichePage() {
             </div>
           </div>
           <div className="hero-visuals">
-            <div className="hero-photo photo-room" />
-            <div className="hero-photo photo-mfa" />
+            <div className="hero-photo photo-doctor" />
           </div>
         </div>
       </section>

@@ -7,7 +7,12 @@ function KontaktPage() {
           <p>
             Sie haben Fragen zu Hybrid-DRG oder möchten Inhalte ergänzen? Schreiben Sie uns gerne.
           </p>
-          <form className="form" onSubmit={(event) => event.preventDefault()}>
+          <form
+            className="form"
+            action="mailto:gilles.penning@gmail.com"
+            method="post"
+            encType="text/plain"
+          >
             <label className="field">
               <span>Name</span>
               <input type="text" placeholder="Ihr Name" required />
