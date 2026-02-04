@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createHashRouter, RouterProvider } from 'react-router-dom'
 import Layout from './layout/Layout'
 import HomePage from './pages/HomePage'
 import HybridDrgPage from './pages/HybridDrgPage'
@@ -9,25 +9,22 @@ import ImpressumPage from './pages/ImpressumPage'
 import DatenschutzPage from './pages/DatenschutzPage'
 import './App.css'
 
-const router = createBrowserRouter(
-  [
-    {
-      path: '/',
-      element: <Layout />,
-      children: [
-        { index: true, element: <HomePage /> },
-        { path: 'hybrid-drg', element: <HybridDrgPage /> },
-        { path: 'praxis', element: <PraxisPage /> },
-        { path: 'fachbereiche', element: <FachbereichePage /> },
-        { path: 'kontakt', element: <KontaktPage /> },
-        { path: 'impressum', element: <ImpressumPage /> },
-        { path: 'datenschutz', element: <DatenschutzPage /> },
-        { path: '*', element: <HomePage /> },
-      ],
-    },
-  ],
-  { basename: import.meta.env.BASE_URL }
-)
+const router = createHashRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: 'hybrid-drg', element: <HybridDrgPage /> },
+      { path: 'praxis', element: <PraxisPage /> },
+      { path: 'fachbereiche', element: <FachbereichePage /> },
+      { path: 'kontakt', element: <KontaktPage /> },
+      { path: 'impressum', element: <ImpressumPage /> },
+      { path: 'datenschutz', element: <DatenschutzPage /> },
+      { path: '*', element: <HomePage /> },
+    ],
+  },
+])
 
 function App() {
   return <RouterProvider router={router} />
