@@ -16,29 +16,30 @@ const fachbereiche = [
 ]
 
 function HomePage() {
+  const logoUrl = `${import.meta.env.BASE_URL}hdrg_kompass.svg`
   return (
     <div className="page">
       <section className="hero">
-        <div className="container hero-inner">
-          <div>
-            <p className="eyebrow">Neutraler Leitfaden für Praxen</p>
-            <h1>Hybrid-DRG verständlich für Praxen</h1>
-            <p className="hero-lead">
-              Ambulantisierung verändert Versorgungsstrukturen. hDRG-Kompass.de bietet Fakten,
-              Praxisperspektive und eine klare Orientierungshilfe.
-            </p>
-            <div className="hero-actions">
-              <Link className="button primary" to="/fachbereiche">
-                Fachbereiche ansehen
-              </Link>
-              <Link className="button secondary" to="/hybrid-drg">
-                Hybrid-DRG erklärt
-              </Link>
+        <div className="hero-bleed">
+          <div className="hero-bleed-image" />
+          <div className="container hero-bleed-content">
+            <div className="hero-glass">
+              <img className="hero-logo" src={logoUrl} alt="hDRG-Kompass Logo" />
+              <p className="eyebrow">Neutraler Leitfaden für Praxen</p>
+              <h1>Hybrid-DRG verständlich für Praxen</h1>
+              <p className="hero-lead">
+                Ambulantisierung verändert Versorgungsstrukturen. hDRG-Kompass.de bietet Fakten,
+                Praxisperspektive und eine klare Orientierungshilfe.
+              </p>
+              <div className="hero-actions">
+                <Link className="button primary" to="/fachbereiche">
+                  Fachbereiche ansehen
+                </Link>
+                <Link className="button secondary" to="/hybrid-drg">
+                  Hybrid-DRG erklärt
+                </Link>
+              </div>
             </div>
-          </div>
-          <div className="hero-visuals">
-            <div className="hero-photo photo-room" />
-            <div className="hero-photo photo-mfa" />
           </div>
         </div>
       </section>
