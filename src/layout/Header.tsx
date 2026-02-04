@@ -1,14 +1,14 @@
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 function Header() {
   const logoUrl = `${import.meta.env.BASE_URL}hdrg_kompass.svg`
   return (
     <header className="header">
       <div className="container header-inner">
-        <div className="brand">
+        <Link className="brand" to="/">
           <img className="brand-logo" src={logoUrl} alt="hDRG-Kompass Logo" />
           <span>hDRG-Kompass.de</span>
-        </div>
+        </Link>
         <nav className="nav">
           <NavLink to="/" end>
             Start
