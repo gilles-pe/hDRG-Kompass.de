@@ -45,8 +45,8 @@
 }
 
 .brand-logo {
-  width: 34px;
-  height: 34px;
+  width: 24px;
+  height: 24px;
   display: block;
 }
 
@@ -131,7 +131,7 @@
   position: absolute;
   inset: 0;
   background-image: linear-gradient(135deg, rgba(10, 68, 73, 0.55), rgba(42, 169, 160, 0.3)),
-    url('/hDRG-Kompass.de/DoctorTablet.jpg');
+    url('DoctorTablet.jpg');
   background-size: cover;
   background-position: center;
   filter: saturate(1.05);
@@ -160,7 +160,7 @@
 }
 
 .hero-logo {
-  width: 140px;
+  width: 96px;
   height: auto;
   margin-bottom: 1rem;
 }
@@ -257,21 +257,21 @@
 
 .photo-room {
   background-image: linear-gradient(135deg, rgba(15, 93, 100, 0.22), rgba(42, 169, 160, 0.12)),
-    url('/hDRG-Kompass.de/Computer.jpg');
+    url('Computer.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .photo-mfa {
   background-image: linear-gradient(135deg, rgba(15, 93, 100, 0.22), rgba(42, 169, 160, 0.12)),
-    url('/hDRG-Kompass.de/Stock.jpg');
+    url('Stock.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .photo-doctor {
   background-image: linear-gradient(135deg, rgba(15, 93, 100, 0.22), rgba(42, 169, 160, 0.12)),
-    url('/hDRG-Kompass.de/DoctorTablet.jpg');
+    url('DoctorTablet.jpg');
   background-size: cover;
   background-position: center;
 }
