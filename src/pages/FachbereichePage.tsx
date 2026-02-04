@@ -531,6 +531,9 @@ const specialties: AccordionItem[] = [
 ]
 
 function FachbereichePage() {
+  const baseUrl = import.meta.env.BASE_URL
+  const doctorImage = `${baseUrl}DoctorTablet.jpg`
+
   return (
     <div className="page">
       <section className="section fach-hero">
@@ -552,7 +555,12 @@ function FachbereichePage() {
             </div>
           </div>
           <div className="hero-visuals">
-            <div className="hero-photo photo-doctor" />
+            <div
+              className="hero-photo"
+              style={{
+                backgroundImage: `linear-gradient(135deg, rgba(15, 93, 100, 0.22), rgba(42, 169, 160, 0.12)), url('${doctorImage}')`,
+              }}
+            />
           </div>
         </div>
       </section>
