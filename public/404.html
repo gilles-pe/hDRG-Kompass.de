@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting…</title>
+    <script>
+      (function () {
+        var base = '/hDRG-Kompass.de/';
+        var path = window.location.pathname.replace(base, '');
+        var search = window.location.search.replace(/&/g, '~and~');
+        var redirect = base + '?/' + path + search + window.location.hash;
+        window.location.replace(redirect);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

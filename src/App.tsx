@@ -9,21 +9,25 @@ import ImpressumPage from './pages/ImpressumPage'
 import DatenschutzPage from './pages/DatenschutzPage'
 import './App.css'
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Layout />,
-    children: [
-      { index: true, element: <HomePage /> },
-      { path: 'hybrid-drg', element: <HybridDrgPage /> },
-      { path: 'praxis', element: <PraxisPage /> },
-      { path: 'fachbereiche', element: <FachbereichePage /> },
-      { path: 'kontakt', element: <KontaktPage /> },
-      { path: 'impressum', element: <ImpressumPage /> },
-      { path: 'datenschutz', element: <DatenschutzPage /> },
-    ],
-  },
-])
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <Layout />,
+      children: [
+        { index: true, element: <HomePage /> },
+        { path: 'hybrid-drg', element: <HybridDrgPage /> },
+        { path: 'praxis', element: <PraxisPage /> },
+        { path: 'fachbereiche', element: <FachbereichePage /> },
+        { path: 'kontakt', element: <KontaktPage /> },
+        { path: 'impressum', element: <ImpressumPage /> },
+        { path: 'datenschutz', element: <DatenschutzPage /> },
+        { path: '*', element: <HomePage /> },
+      ],
+    },
+  ],
+  { basename: import.meta.env.BASE_URL }
+)
 
 function App() {
   return <RouterProvider router={router} />
