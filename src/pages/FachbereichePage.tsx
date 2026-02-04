@@ -532,7 +532,7 @@ const specialties: AccordionItem[] = [
 
 function FachbereichePage() {
   const baseUrl = import.meta.env.BASE_URL
-  const doctorImage = `${baseUrl}DoctorTablet.jpg`
+  const doctorImage = `${baseUrl}Computer.jpg`
 
   return (
     <div className="page">
