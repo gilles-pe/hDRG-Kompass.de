@@ -130,8 +130,6 @@
 .hero-bleed-image {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(135deg, rgba(10, 68, 73, 0.55), rgba(42, 169, 160, 0.3)),
-    url('DoctorTablet.jpg');
   background-size: cover;
   background-position: center;
   filter: saturate(1.05);

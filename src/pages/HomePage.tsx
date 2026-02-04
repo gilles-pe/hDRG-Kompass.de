@@ -17,11 +17,17 @@ const fachbereiche = [
 
 function HomePage() {
   const logoUrl = `${import.meta.env.BASE_URL}hdrg_kompass.svg`
+  const heroImageUrl = `${import.meta.env.BASE_URL}DoctorTablet.jpg`
   return (
     <div className="page">
       <section className="hero">
         <div className="hero-bleed">
-          <div className="hero-bleed-image" />
+          <div
+            className="hero-bleed-image"
+            style={{
+              backgroundImage: `linear-gradient(135deg, rgba(10, 68, 73, 0.55), rgba(42, 169, 160, 0.3)), url('${heroImageUrl}')`,
+            }}
+          />
           <div className="container hero-bleed-content">
             <div className="hero-glass">
               <img className="hero-logo" src={logoUrl} alt="hDRG-Kompass Logo" />
