@@ -2,16 +2,13 @@ import { Link } from 'react-router-dom'
 
 const fachbereiche = [
   { id: 'kardiologie', title: 'Kardiologie', subtitle: 'PCI & Schrittmacher' },
-  { id: 'orthopaedie', title: 'Orthopädie', subtitle: 'Knie & Schulter' },
+  { id: 'orthopaedie', title: 'Orthopädie & Sportmedizin', subtitle: 'Knie, Schulter, Hand & Fuß' },
   { id: 'viszeralchirurgie', title: 'Viszeralchirurgie', subtitle: 'Hernien & Galle' },
   { id: 'urologie', title: 'Urologie', subtitle: 'TUR-P & Harnstein' },
   { id: 'gynaekologie', title: 'Gynäkologie', subtitle: 'LASH & Mamma' },
   { id: 'gefaesschirurgie', title: 'Gefäßchirurgie', subtitle: 'Varizen' },
   { id: 'hno', title: 'HNO', subtitle: 'Septum/NNH & RF' },
-  { id: 'handchirurgie', title: 'Handchirurgie', subtitle: 'Rhizarthrose' },
-  { id: 'fusschirurgie', title: 'Fußchirurgie', subtitle: 'Hallux Valgus' },
   { id: 'proktologie', title: 'Proktologie', subtitle: 'Hämorrhoiden' },
-  { id: 'allgemeinchirurgie', title: 'Allgemeinchirurgie', subtitle: 'Metallentfernung' },
   { id: 'gastroenterologie', title: 'Gastroenterologie', subtitle: 'ERCP & Koloskopie' },
 ]
 
@@ -31,7 +28,7 @@ function HomePage() {
           <div className="container hero-bleed-content">
             <div className="hero-glass">
               <img className="hero-logo" src={logoUrl} alt="hDRG-Kompass Logo" />
-              <p className="eyebrow">Neutraler Leitfaden für Praxen</p>
+              <p className="eyebrow">Leitfaden für Praxen und MVZ</p>
               <h1>Hybrid-DRG verständlich für Praxen</h1>
               <p className="hero-lead">
                 Ambulantisierung verändert Versorgungsstrukturen. hDRG-Kompass.de bietet Fakten,

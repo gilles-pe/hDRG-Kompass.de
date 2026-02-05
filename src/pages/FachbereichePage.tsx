@@ -130,21 +130,22 @@ const specialties: AccordionItem[] = [
   },
   {
     id: 'orthopaedie',
-    title: 'Sportmedizin (Knie & Schulter)',
-    subtitle: 'I29Z – Knie | I30Z – Schulter',
+    title: 'Orthopädie & Sportmedizin (Knie, Schulter, Hand & Fuß)',
+    subtitle: 'I29Z – Knie | I30Z – Schulter | I32F – Rhizarthrose | I20E – Hallux Valgus | I98C – Metallentfernung',
     content: (
       <div className="accordion-content">
         <p>
-          Hohe Fallzahlen verlangen eine saubere Standardisierung der Instrumente, Sets und
-          OP-Zeiten. Das schafft messbare Effizienz und Ergebnisqualität.
+          Hohe Fallzahlen in Knie-, Schulter-, Hand- und Fußchirurgie verlangen eine saubere
+          Standardisierung der Instrumente, Sets und OP-Zeiten. Das schafft messbare Effizienz,
+          Ergebnisqualität und kalkulierbare Materialkosten.
         </p>
         <div className="accordion-columns">
           <div>
             <h4>Nutzen für Ärztinnen & Ärzte</h4>
             <ul>
+              <li>Breites Spektrum von Knie/Schulter bis Hand/Fuß aus einer Hand</li>
               <li>Hohe Routine und reproduzierbare Ergebnisse</li>
-              <li>Schnelle Mobilisation, kurze Erholungszeiten</li>
-              <li>Reha-nahe Versorgung mit klarer Nachsorge</li>
+              <li>Schnelle Mobilisation, kurze Erholungszeiten und klare Nachsorge</li>
             </ul>
           </div>
           <div>
@@ -154,6 +155,8 @@ const specialties: AccordionItem[] = [
               <li>Fluid-Management</li>
               <li>Shaver- und RF-Systeme</li>
               <li>Standardisierte Lagerung</li>
+              <li>Mini-C-Bogen & Hand-Tisch</li>
+              <li>Power-Tools & röntgendurchlässiger Tisch</li>
             </ul>
           </div>
         </div>
@@ -161,6 +164,10 @@ const specialties: AccordionItem[] = [
           pauschalen={[
             { label: `I29Z – Knie – ${formatEuro(3400)}`, value: 3400 },
             { label: `I30Z – Schulter – ${formatEuro(3650)}`, value: 3650 },
+            { label: `I32F – Rhizarthrose – ${formatEuro(1450)}`, value: 1450 },
+            { label: `I20E – Hallux Valgus – ${formatEuro(1600)}`, value: 1600 },
+            { label: `I98C – Metallentfernung – ${formatEuro(800)}`, value: 800 },
+            { label: `I98C – Metallentfernung – ${formatEuro(1000)}`, value: 1000 },
           ]}
         />
       </div>
@@ -351,76 +358,6 @@ const specialties: AccordionItem[] = [
     ),
   },
   {
-    id: 'handchirurgie',
-    title: 'Handchirurgie (Rhizarthrose)',
-    subtitle: 'I32F – Rhizarthrose',
-    content: (
-      <div className="accordion-content">
-        <p>
-          Ambulante Spezialversorgung mit hoher Routine, kurzen Wegen und klarer Instrumentenlogik
-          stärkt die Ergebnisqualität.
-        </p>
-        <div className="accordion-columns">
-          <div>
-            <h4>Nutzen für Ärztinnen & Ärzte</h4>
-            <ul>
-              <li>Regionale Anästhesie effizient einsetzbar</li>
-              <li>Kurze OP-Zeiten und zügige Nachsorge</li>
-              <li>Ruhiges Setting für präzise Eingriffe</li>
-            </ul>
-          </div>
-          <div>
-            <h4>Für Praxisteam & MFA</h4>
-            <ul>
-              <li>Mini-C-Bogen</li>
-              <li>Hand-Tisch</li>
-              <li>Mikro-Instrumentarium</li>
-              <li>Tourniquet</li>
-            </ul>
-          </div>
-        </div>
-        <FachbereichCalculator
-          pauschalen={[{ label: `I32F – Rhizarthrose – ${formatEuro(1450)}`, value: 1450 }]}
-        />
-      </div>
-    ),
-  },
-  {
-    id: 'fusschirurgie',
-    title: 'Fußchirurgie (Hallux Valgus)',
-    subtitle: 'I20E – Hallux Valgus',
-    content: (
-      <div className="accordion-content">
-        <p>
-          Häufige Eingriffe, bei denen Qualität, Prozesssicherheit und eine stringente
-          Standardisierung entscheidend sind.
-        </p>
-        <div className="accordion-columns">
-          <div>
-            <h4>Nutzen für Ärztinnen & Ärzte</h4>
-            <ul>
-              <li>Ambulante Versorgung ohne stationäre Belastung</li>
-              <li>Minimal-invasive Optionen planbar integrierbar</li>
-              <li>Nachsorge aus einer Hand</li>
-            </ul>
-          </div>
-          <div>
-            <h4>Für Praxisteam & MFA</h4>
-            <ul>
-              <li>Mini-C-Bogen</li>
-              <li>Power-Tools</li>
-              <li>Röntgendurchlässiger Tisch</li>
-              <li>Sterilgut-Management</li>
-            </ul>
-          </div>
-        </div>
-        <FachbereichCalculator
-          pauschalen={[{ label: `I20E – Hallux Valgus – ${formatEuro(1600)}`, value: 1600 }]}
-        />
-      </div>
-    ),
-  },
-  {
     id: 'proktologie',
     title: 'Proktologie (Hämorrhoiden)',
     subtitle: 'G23B – Hämorrhoiden',
@@ -451,44 +388,6 @@ const specialties: AccordionItem[] = [
         </div>
         <FachbereichCalculator
           pauschalen={[{ label: `G23B – Hämorrhoiden – ${formatEuro(1300)}`, value: 1300 }]}
-        />
-      </div>
-    ),
-  },
-  {
-    id: 'allgemeinchirurgie',
-    title: 'Allgemeinchirurgie (Metallentfernung)',
-    subtitle: 'I98C – Metallentfernung',
-    content: (
-      <div className="accordion-content">
-        <p>
-          Routineeingriffe mit klaren Prozessen, hoher Planbarkeit und effizienter Instrumentenlogik
-          sind ideal für den ambulanten OP.
-        </p>
-        <div className="accordion-columns">
-          <div>
-            <h4>Nutzen für Ärztinnen & Ärzte</h4>
-            <ul>
-              <li>Planbare OP-Zeiten und klare Indikationswege</li>
-              <li>Kurze Wege mit hoher Patientenzufriedenheit</li>
-              <li>Unkomplizierte Nachsorgeprozesse</li>
-            </ul>
-          </div>
-          <div>
-            <h4>Für Praxisteam & MFA</h4>
-            <ul>
-              <li>C-Bogen</li>
-              <li>Schraubendreher-Sets</li>
-              <li>Standard-OP-Tisch</li>
-              <li>Logistik für Explantate</li>
-            </ul>
-          </div>
-        </div>
-        <FachbereichCalculator
-          pauschalen={[
-            { label: `I98C – Metallentfernung – ${formatEuro(800)}`, value: 800 },
-            { label: `I98C – Metallentfernung – ${formatEuro(1000)}`, value: 1000 },
-          ]}
         />
       </div>
     ),
@@ -532,7 +431,7 @@ const specialties: AccordionItem[] = [
 
 function FachbereichePage() {
   const baseUrl = import.meta.env.BASE_URL
-  const doctorImage = `${baseUrl}Computer.jpg`
+  const doctorImage = `${baseUrl}Stock.jpg`
 
   return (
     <div className="page">
@@ -542,17 +441,19 @@ function FachbereichePage() {
             <p className="eyebrow">Fachbereiche</p>
             <h1>Fachbereiche für den ambulanten OP-Betrieb</h1>
             <p className="hero-lead">
-              Für Ärztinnen und Ärzte, Praxisteam und MFA: 12 Fachbereiche mit typischen
-              hDRG-Eingriffen, Pauschalen, Team-Checklisten und einer integrierten OP-Kalkulation pro
-              Fachbereich – kompakt, praxisnah und sofort nutzbar.
+              Diese fachspezifische Aufarbeitung unterstützt Ärztinnen, Ärzte und MFA bei der
+              strukturierten planung ambulanter Eingriffe. Sie umfasst 12 Fachbereiche inklusive
+              relevanter hDRG-Eingriffe, Pauschalen und Checklisten. Eine OP-Kalkulation 
+              dient dabei als Grundlage für die betriebswirtschaftliche
+              Planung im Praxisalltag.
             </p>
-            <div className="hero-actions">
-              {specialties.map((specialty) => (
-                <a className="button secondary" key={specialty.title} href={`#${specialty.id}`}>
-                  {specialty.title.split(' (')[0]}
-                </a>
-              ))}
-            </div>
+            <p className="muted">
+              Die Nutzung dieser Unterlagen sowie die Umsetzung der Kalkulationen erfolgen
+              eigenverantwortlich; eine Haftung für Richtigkeit oder Vollständigkeit kann nicht übernommen werden.
+              Für weiterführende Details oder bei spezifischen Rückfragen können Sie sich jederzeit
+              unverbindlich informieren. Wir stehen Ihnen für einen fachlichen Austausch und zur
+              Klärung Ihrer Fragen gerne zur Verfügung.
+            </p>
           </div>
           <div className="hero-visuals">
             <div
