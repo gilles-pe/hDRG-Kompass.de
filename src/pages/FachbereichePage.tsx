@@ -166,8 +166,7 @@ const specialties: AccordionItem[] = [
             { label: `I30Z – Schulter – ${formatEuro(3650)}`, value: 3650 },
             { label: `I32F – Rhizarthrose – ${formatEuro(1450)}`, value: 1450 },
             { label: `I20E – Hallux Valgus – ${formatEuro(1600)}`, value: 1600 },
-            { label: `I98C – Metallentfernung – ${formatEuro(800)}`, value: 800 },
-            { label: `I98C – Metallentfernung – ${formatEuro(1000)}`, value: 1000 },
+            { label: `I98C – Metallentfernung – ${formatEuro(950)}`, value: 950 },
           ]}
         />
       </div>
