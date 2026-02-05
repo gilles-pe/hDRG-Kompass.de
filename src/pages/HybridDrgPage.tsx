@@ -1,6 +1,6 @@
 function HybridDrgPage() {
   const baseUrl = import.meta.env.BASE_URL
-  const principleImage = `${baseUrl}hDRG Prinzip.jpg`
+  const principleImage = `${baseUrl}${encodeURIComponent('hDRG Prinzip.jpg')}`
 
   return (
     <div className="page">
