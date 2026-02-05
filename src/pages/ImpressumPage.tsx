@@ -7,6 +7,7 @@ function ImpressumPage() {
           <p>
             Sanoom GmbH<br />
             Richard-Dehmel-Str. 13<br />
+            Hamburg<br />
             Deutschland
           </p>
           <p>E-Mail: info@sanoom.de</p>
