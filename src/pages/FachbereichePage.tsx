@@ -102,7 +102,7 @@ const specialties: AccordionItem[] = [
         </p>
         <div className="accordion-columns">
           <div>
-            <h4>Nutzen für Ärztinnen & Ärzte</h4>
+            <h4>Nutzen für Patienten</h4>
             <ul>
               <li>Kontinuierliche Patientenführung ohne Klinikbruch</li>
               <li>Planbare Terminierung und kurze Wege</li>
@@ -110,7 +110,7 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
           <div>
-            <h4>Für Praxisteam & MFA</h4>
+            <h4>Notwendige Ausstattung</h4>
             <ul>
               <li>Angiographie-Anlage (LHK)</li>
               <li>Monitoring- und Notfall-Setup</li>
@@ -141,7 +141,7 @@ const specialties: AccordionItem[] = [
         </p>
         <div className="accordion-columns">
           <div>
-            <h4>Nutzen für Ärztinnen & Ärzte</h4>
+            <h4>Nutzen für Patienten</h4>
             <ul>
               <li>Breites Spektrum von Knie/Schulter bis Hand/Fuß aus einer Hand</li>
               <li>Hohe Routine und reproduzierbare Ergebnisse</li>
@@ -149,7 +149,7 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
           <div>
-            <h4>Für Praxisteam & MFA</h4>
+            <h4>Notwendige Ausstattung</h4>
             <ul>
               <li>Arthroskopie-Turm</li>
               <li>Fluid-Management</li>
@@ -185,7 +185,7 @@ const specialties: AccordionItem[] = [
         </p>
         <div className="accordion-columns">
           <div>
-            <h4>Nutzen für Ärztinnen & Ärzte</h4>
+            <h4>Nutzen für Patienten</h4>
             <ul>
               <li>Planbare OP-Termine ohne Klinikverschiebung</li>
               <li>Kontinuierliche Betreuung in vertrauter Umgebung</li>
@@ -193,7 +193,7 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
           <div>
-            <h4>Für Praxisteam & MFA</h4>
+            <h4>Notwendige Ausstattung</h4>
             <ul>
               <li>Laparoskopie-Turm & CO2-Insufflator</li>
               <li>HF-Chirurgie</li>
@@ -223,7 +223,7 @@ const specialties: AccordionItem[] = [
         </p>
         <div className="accordion-columns">
           <div>
-            <h4>Nutzen für Ärztinnen & Ärzte</h4>
+            <h4>Nutzen für Patienten</h4>
             <ul>
               <li>Diskrete Versorgung in vertrauter Struktur</li>
               <li>Planbare Abläufe ohne Klinikverschiebung</li>
@@ -231,7 +231,7 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
           <div>
-            <h4>Für Praxisteam & MFA</h4>
+            <h4>Notwendige Ausstattung</h4>
             <ul>
               <li>Endourologie-Video-Turm</li>
               <li>Laser-System</li>
@@ -261,7 +261,7 @@ const specialties: AccordionItem[] = [
         </p>
         <div className="accordion-columns">
           <div>
-            <h4>Nutzen für Ärztinnen & Ärzte</h4>
+            <h4>Nutzen für Patienten</h4>
             <ul>
               <li>Hohe Patientenzufriedenheit durch kurze Aufenthalte</li>
               <li>Therapie in vertrauter Praxisumgebung</li>
@@ -269,7 +269,7 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
           <div>
-            <h4>Für Praxisteam & MFA</h4>
+            <h4>Notwendige Ausstattung</h4>
             <ul>
               <li>Duplex-Sonographie</li>
               <li>Laser/RF-Generator</li>
@@ -296,7 +296,7 @@ const specialties: AccordionItem[] = [
         </p>
         <div className="accordion-columns">
           <div>
-            <h4>Nutzen für Ärztinnen & Ärzte</h4>
+            <h4>Nutzen für Patienten</h4>
             <ul>
               <li>Ruhige, vertraute Umgebung für sensible Indikationen</li>
               <li>Schonende minimal-invasive Verfahren mit klarer Selektion</li>
@@ -304,7 +304,7 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
           <div>
-            <h4>Für Praxisteam & MFA</h4>
+            <h4>Notwendige Ausstattung</h4>
             <ul>
               <li>Laparoskopie-Turm</li>
               <li>Morcellator & Instrumente</li>
@@ -334,7 +334,7 @@ const specialties: AccordionItem[] = [
         </p>
         <div className="accordion-columns">
           <div>
-            <h4>Nutzen für Ärztinnen & Ärzte</h4>
+            <h4>Nutzen für Patienten</h4>
             <ul>
               <li>Ruhige Umgebung ohne Klinikbelastung</li>
               <li>Kurze Terminfenster mit planbaren OP-Zeiten</li>
@@ -342,7 +342,7 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
           <div>
-            <h4>Für Praxisteam & MFA</h4>
+            <h4>Notwendige Ausstattung</h4>
             <ul>
               <li>HNO-Turm & Shaver</li>
               <li>RF-Generator</li>
@@ -369,7 +369,7 @@ const specialties: AccordionItem[] = [
         </p>
         <div className="accordion-columns">
           <div>
-            <h4>Nutzen für Ärztinnen & Ärzte</h4>
+            <h4>Nutzen für Patienten</h4>
             <ul>
               <li>Diskrete Versorgung in vertrauter Umgebung</li>
               <li>Kurze Eingriffe mit schneller Entlassung</li>
@@ -377,7 +377,7 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
           <div>
-            <h4>Für Praxisteam & MFA</h4>
+            <h4>Notwendige Ausstattung</h4>
             <ul>
               <li>Steinschnittlagerung</li>
               <li>Rektoskopie-Instrumente</li>

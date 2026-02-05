@@ -27,8 +27,10 @@ function HomePage() {
           />
           <div className="container hero-bleed-content">
             <div className="hero-glass">
-              <img className="hero-logo" src={logoUrl} alt="hDRG-Kompass Logo" />
-              <p className="eyebrow">Leitfaden für Praxen und MVZ</p>
+              <div className="hero-kicker">
+                <img className="hero-logo" src={logoUrl} alt="hDRG-Kompass Logo" />
+                <p className="eyebrow">Leitfaden für Praxen und MVZ</p>
+              </div>
               <h1>Hybrid-DRG verständlich für Praxen</h1>
               <p className="hero-lead">
                 Ambulantisierung verändert Versorgungsstrukturen. hDRG-Kompass.de bietet Fakten,
