@@ -1,20 +1,31 @@
 function HybridDrgPage() {
+  const baseUrl = import.meta.env.BASE_URL
+  const principleImage = `${baseUrl}hDRG Prinzip.jpg`
+
   return (
     <div className="page">
       <section className="section">
         <div className="container narrow">
-          <h1>Hybrid-DRG erklärt</h1>
+          <h1>Hybrid-DRG – Gleiche Vergütung für gleiche Leistung</h1>
+          <h2>Der Grundgedanke</h2>
           <p>
-            Hybrid-DRG (hDRG) sind spezielle, sektorengleiche Fallpauschalen für ausgewählte Eingriffe.
-            Die Vergütung ist identisch – unabhängig davon, ob der Eingriff ambulant oder stationär
-            erbracht wird. Rechtsgrundlage ist § 115f SGB V. Ziel ist es, ambulant geeignete Leistungen
-            konsequent zu stärken und gleichzeitig eine klare, planbare Vergütung zu schaffen.
+            Schluss mit der finanziellen Unterscheidung zwischen Klinik und Praxis: Hybrid-DRGs (hDRG)
+            garantieren für ausgewählte Eingriffe eine identische Vergütung – unabhängig davon, wo die
+            Leistung erbracht wird. Das Ziel nach § 115f SGB V ist klar: Ambulante Potenziale sollen
+            konsequent gestärkt und Planungssicherheit geschaffen werden.
           </p>
-          <div className="callout">
-            <p>
-              Für Praxen bedeutet das: eine einheitliche Pauschale pro Fall – mit Fokus auf effiziente
-              Abläufe, stabile Sachkosten, saubere Dokumentation und verlässliche OP-Logistik.
-            </p>
+          <div className="principle-grid">
+            <div className="callout">
+              <h3>Die Konsequenz für die Praxis</h3>
+              <p>
+                Es gilt eine einfache Formel: Eine einheitliche Pauschale pro Fall. Damit verlagert sich
+                der Fokus der Wirtschaftlichkeit auf effiziente Abläufe, eine stabile
+                Sachkosten-Kalkulation und eine lückenlose Dokumentation.
+              </p>
+            </div>
+            <div className="principle-image">
+              <img src={principleImage} alt="hDRG Prinzip" />
+            </div>
           </div>
         </div>
       </section>
@@ -22,19 +33,21 @@ function HybridDrgPage() {
       <section className="section muted">
         <div className="container grid-2">
           <div className="card">
-            <h2>Wie funktioniert das Prinzip?</h2>
+            <h2>Wie das Prinzip funktioniert</h2>
+            <h3>Der Katalog gibt den Takt vor</h3>
             <p>
-              Ein definierter Katalog legt fest, welche Leistungen als Hybrid-DRG vergütet werden. Für
-              diese Eingriffe gilt eine einheitliche Pauschale, egal ob die Leistung ambulant oder
-              stationär erbracht wird.
+              Nicht jeder Eingriff fällt unter diese Regelung. Ein definierter Katalog legt exakt fest,
+              welche Leistungen als Hybrid-DRG vergütet werden. Für diese Eingriffe ist die Erlöshöhe
+              fixiert, egal ob der Patient ambulant oder stationär versorgt wird.
             </p>
           </div>
           <div className="card">
-            <h2>Was ist in der Pauschale enthalten?</h2>
+            <h2>Alles in einer Pauschale</h2>
             <p>
-              Die Pauschale deckt die Leistungen, die im direkten Zusammenhang mit dem Eingriff in der
-              operierenden Einrichtung anfallen. Sachkosten sind Teil der Fallpauschale und müssen
-              sauber gesteuert werden.
+              Die Vergütung deckt sämtliche Leistungen ab, die im direkten Zusammenhang mit dem Eingriff
+              stehen. Der entscheidende Faktor: Auch die Sachkosten sind Teil dieser Pauschale. Das
+              bedeutet, dass der wirtschaftliche Erfolg direkt von einem präzisen Materialmanagement
+              abhängt.
             </p>
           </div>
         </div>
@@ -43,20 +56,24 @@ function HybridDrgPage() {
       <section className="section">
         <div className="container grid-2">
           <div>
-            <h2>Was heißt das für Ärztinnen & Ärzte?</h2>
-            <ul className="list">
-              <li>Identische Vergütung ambulant wie stationär bei definierten Eingriffen</li>
-              <li>Planbare OP-Programme durch Kataloge und feste Pauschalen</li>
-              <li>Mehr Spielraum für ambulante Spezialisierung und strukturierte Nachsorge</li>
-            </ul>
+            <h2>Was das für das Team bedeutet</h2>
+            <h3>Für Ärztinnen & Ärzte: Planungssicherheit</h3>
+            <p>
+              Der größte Vorteil ist der Wegfall der finanziellen Benachteiligung gegenüber Kliniken.
+              Durch feste Kataloge lassen sich OP-Programme verlässlich planen. Das schafft endlich den
+              nötigen wirtschaftlichen Spielraum für eine hochwertige ambulante Spezialisierung und
+              strukturierte Nachsorge.
+            </p>
           </div>
           <div>
-            <h2>Was heißt das für Praxisteam & MFA?</h2>
-            <ul className="list">
-              <li>Hoher Stellenwert standardisierter Abläufe und OP-Set-Logik</li>
-              <li>Transparente Materialkosten und saubere Dokumentationsprozesse</li>
-              <li>Konsequente Vorbereitung, Aufbereitung und Zeitfenstersteuerung</li>
-            </ul>
+            <h2>&nbsp;</h2>
+            <h3>Für Praxisteam & MFA: Prozess-Exzellenz</h3>
+            <p>
+              Die Rolle der MFA wandelt sich zum Prozess-Manager. Da Materialkosten in der Pauschale
+              inkludiert sind, werden standardisierte OP-Sets und eine transparente Lagerhaltung kritisch
+              für den Ertrag. Eine saubere Dokumentation und eine exakte Zeitsteuerung der Abläufe sichern
+              am Ende den Gewinn der Praxis.
+            </p>
           </div>
         </div>
       </section>
@@ -65,10 +82,21 @@ function HybridDrgPage() {
         <div className="container narrow">
           <h2>Aktueller Stand</h2>
           <p>
-            Die Hybrid-DRG gelten seit 1. Januar 2024 und werden über einen Leistungskatalog mit
-            OPS-Kodes sowie festgelegten Pauschalen gesteuert. Für 2026 hat der ergänzte erweiterte
-            Bewertungsausschuss die Regeln neu festgelegt und den Katalog ausgeweitet – auf 69
-            Hybrid-DRG mit insgesamt 904 OPS-Kodes.
+            Das System ist seit dem 1. Januar 2024 aktiv. Der Bewertungsausschuss passt die Regeln
+            dynamisch an: Für das Jahr 2026 wurde der Katalog bereits erweitert und umfasst nun 69
+            Hybrid-DRGs mit insgesamt 904 OPS-Kodes.
+          </p>
+          <p>
+            Weitere Details zur Abrechnung, Vergütung und zum Leistungskatalog finden Sie hier:{' '}
+            <a
+              className="text-link"
+              href="https://www.kbv.de/praxis/abrechnung/ambulantes-operieren/hybrid-drg"
+              target="_blank"
+              rel="noreferrer"
+            >
+              KBV – Hybrid-DRG
+            </a>
+            .
           </p>
         </div>
       </section>
