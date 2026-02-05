@@ -421,7 +421,7 @@ const specialties: AccordionItem[] = [
           </div>
         </div>
         <FachbereichCalculator
-          pauschalen={[{ label: `H41N/M – ERCP & Koloskopie – ${formatEuro(1650)}`, value: 1650 }]}
+          pauschalen={[{ label: `H41N/M – ERCP – ${formatEuro(1650)}`, value: 1650 }]}
         />
       </div>
     ),
