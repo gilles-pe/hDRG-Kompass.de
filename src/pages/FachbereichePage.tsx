@@ -1,99 +1,67 @@
-import { useState } from 'react'
 import Accordion, { type AccordionItem } from '../components/Accordion'
+import HybridDrgCalculator from '../components/HybridDrgCalculator'
+import { hybridDrgProcedures, type HybridDrgProcedure } from '../data/hybridDrgProcedures'
 
-type PauschaleOption = {
-  label: string
-  value: number
+type SectionKey =
+  | 'kardiologie'
+  | 'orthopaedie'
+  | 'viszeralchirurgie'
+  | 'urologie'
+  | 'gefaesschirurgie'
+  | 'gynaekologie'
+  | 'hno'
+  | 'proktologie'
+  | 'gastroenterologie'
+  | 'weitere'
+
+const categoryToSection: Record<string, SectionKey> = {
+  Kardiologie: 'kardiologie',
+  'Kardiologie/Gefäßchirurgie': 'gefaesschirurgie',
+  Orthopädie: 'orthopaedie',
+  'Orthopädie/Fußchirurgie': 'orthopaedie',
+  'Orthopädie/Handchirurgie': 'orthopaedie',
+  'Orthopädie/Traumatologie': 'orthopaedie',
+  Viszeralchirurgie: 'viszeralchirurgie',
+  Allgemeinchirurgie: 'viszeralchirurgie',
+  'Allgemeinchirurgie/Hernien': 'viszeralchirurgie',
+  Urologie: 'urologie',
+  Gynäkologie: 'gynaekologie',
+  Gastroenterologie: 'gastroenterologie',
+  Proktologie: 'proktologie',
 }
 
-type FachbereichCalculatorProps = {
-  pauschalen: PauschaleOption[]
-  defaultOpsPerWeek?: number
-  defaultWeeksPerYear?: number
+function getSectionKey(category: string): SectionKey {
+  return categoryToSection[category] ?? 'weitere'
 }
 
-function formatNumber(value: number) {
-  return new Intl.NumberFormat('de-DE').format(value)
+function groupProceduresBySection(procedures: HybridDrgProcedure[]) {
+  const grouped: Record<SectionKey, HybridDrgProcedure[]> = {
+    kardiologie: [],
+    orthopaedie: [],
+    viszeralchirurgie: [],
+    urologie: [],
+    gefaesschirurgie: [],
+    gynaekologie: [],
+    hno: [],
+    proktologie: [],
+    gastroenterologie: [],
+    weitere: [],
+  }
+
+  procedures.forEach((procedure) => {
+    grouped[getSectionKey(procedure.category)].push(procedure)
+  })
+
+  return grouped
 }
 
-function formatEuro(value: number) {
-  return `${formatNumber(value)} €`
-}
-
-function FachbereichCalculator({
-  pauschalen,
-  defaultOpsPerWeek = 8,
-  defaultWeeksPerYear = 46,
-}: FachbereichCalculatorProps) {
-  const [opsPerWeek, setOpsPerWeek] = useState(defaultOpsPerWeek)
-  const [weeksPerYear, setWeeksPerYear] = useState(defaultWeeksPerYear)
-  const [pauschale, setPauschale] = useState(pauschalen[0]?.value ?? 0)
-
-  const opsPerYear = opsPerWeek * weeksPerYear
-  const jahresvolumen = pauschale * opsPerYear
-
-  return (
-    <div className="fach-calc">
-      <h4>OP-Betrieb kalkulieren</h4>
-      <div className="fach-calc-grid">
-        <label className="slider-field">
-          OPS pro Woche
-          <input
-            type="range"
-            min={1}
-            max={40}
-            value={opsPerWeek}
-            onChange={(event) => setOpsPerWeek(Number(event.target.value))}
-          />
-          <span className="slider-hint">
-            <span>1</span>
-            <span>{opsPerWeek}</span>
-            <span>40</span>
-          </span>
-        </label>
-        <label className="slider-field">
-          Wochen pro Jahr (OP-Betrieb)
-          <input
-            type="range"
-            min={20}
-            max={52}
-            value={weeksPerYear}
-            onChange={(event) => setWeeksPerYear(Number(event.target.value))}
-          />
-          <span className="slider-hint">
-            <span>20</span>
-            <span>{weeksPerYear}</span>
-            <span>52</span>
-          </span>
-        </label>
-        <label className="select-field">
-          Pauschale pro Fall
-          <select value={pauschale} onChange={(event) => setPauschale(Number(event.target.value))}>
-            {pauschalen.map((option) => (
-              <option key={option.label} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </label>
-        <div className="calc-result">
-          <span>OPS pro Jahr</span>
-          <span>{formatNumber(opsPerYear)}</span>
-        </div>
-        <div className="calc-result">
-          <span>Umsatz-Potenzial</span>
-          <span>{formatEuro(jahresvolumen)}</span>
-        </div>
-      </div>
-    </div>
-  )
-}
+const proceduresBySection = groupProceduresBySection(hybridDrgProcedures)
 
 const specialties: AccordionItem[] = [
   {
     id: 'kardiologie',
     title: 'Kardiologie (PCI & Schrittmacher)',
-    subtitle: 'F24F – PCI | F12F – Schrittmacher',
+    subtitle: 'Hybrid-DRG-Katalog 2025/2026',
     content: (
       <div className="accordion-content">
         <p>
@@ -119,19 +87,14 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
         </div>
-        <FachbereichCalculator
-          pauschalen={[
-            { label: `F24F – PCI – ${formatEuro(3200)}`, value: 3200 },
-            { label: `F12F – Schrittmacher – ${formatEuro(4100)}`, value: 4100 },
-          ]}
-        />
+        <HybridDrgCalculator procedures={proceduresBySection.kardiologie} />
       </div>
     ),
   },
   {
     id: 'orthopaedie',
     title: 'Orthopädie & Sportmedizin (Knie, Schulter, Hand & Fuß)',
-    subtitle: 'I29Z – Knie | I30Z – Schulter | I32F – Rhizarthrose | I20E – Hallux Valgus | I98C – Metallentfernung',
+    subtitle: 'Hybrid-DRG-Katalog 2025/2026',
     content: (
       <div className="accordion-content">
         <p>
@@ -160,22 +123,14 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
         </div>
-        <FachbereichCalculator
-          pauschalen={[
-            { label: `I29Z – Knie – ${formatEuro(3400)}`, value: 3400 },
-            { label: `I30Z – Schulter – ${formatEuro(3650)}`, value: 3650 },
-            { label: `I32F – Rhizarthrose – ${formatEuro(1450)}`, value: 1450 },
-            { label: `I20E – Hallux Valgus – ${formatEuro(1600)}`, value: 1600 },
-            { label: `I98C – Metallentfernung – ${formatEuro(950)}`, value: 950 },
-          ]}
-        />
+        <HybridDrgCalculator procedures={proceduresBySection.orthopaedie} />
       </div>
     ),
   },
   {
     id: 'viszeralchirurgie',
     title: 'Viszeralchirurgie (Hernien & Galle)',
-    subtitle: 'G24Z – Hernien | H08B – Galle',
+    subtitle: 'Hybrid-DRG-Katalog 2025/2026',
     content: (
       <div className="accordion-content">
         <p>
@@ -201,19 +156,14 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
         </div>
-        <FachbereichCalculator
-          pauschalen={[
-            { label: `G24Z – Hernien – ${formatEuro(1980)}`, value: 1980 },
-            { label: `H08B – Galle – ${formatEuro(2400)}`, value: 2400 },
-          ]}
-        />
+        <HybridDrgCalculator procedures={proceduresBySection.viszeralchirurgie} />
       </div>
     ),
   },
   {
     id: 'urologie',
     title: 'Urologie (TUR-P & Harnstein)',
-    subtitle: 'L06Z – TUR-P | L17C – Harnstein',
+    subtitle: 'Hybrid-DRG-Katalog 2025/2026',
     content: (
       <div className="accordion-content">
         <p>
@@ -239,19 +189,14 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
         </div>
-        <FachbereichCalculator
-          pauschalen={[
-            { label: `L06Z – TUR-P – ${formatEuro(2400)}`, value: 2400 },
-            { label: `L17C – Harnstein – ${formatEuro(1750)}`, value: 1750 },
-          ]}
-        />
+        <HybridDrgCalculator procedures={proceduresBySection.urologie} />
       </div>
     ),
   },
   {
     id: 'gefaesschirurgie',
     title: 'Gefäßchirurgie (Varizen)',
-    subtitle: 'F39Z – Varizen',
+    subtitle: 'Hybrid-DRG-Katalog 2025/2026',
     content: (
       <div className="accordion-content">
         <p>
@@ -277,16 +222,14 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
         </div>
-        <FachbereichCalculator
-          pauschalen={[{ label: `F39Z – Varizen – ${formatEuro(1100)}`, value: 1100 }]}
-        />
+        <HybridDrgCalculator procedures={proceduresBySection.gefaesschirurgie} />
       </div>
     ),
   },
   {
     id: 'gynaekologie',
     title: 'Gynäkologie (LASH & Mamma)',
-    subtitle: 'N04Z – LASH | J16Z – Mamma',
+    subtitle: 'Hybrid-DRG-Katalog 2025/2026',
     content: (
       <div className="accordion-content">
         <p>
@@ -312,19 +255,14 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
         </div>
-        <FachbereichCalculator
-          pauschalen={[
-            { label: `N04Z – LASH – ${formatEuro(2900)}`, value: 2900 },
-            { label: `J16Z – Mamma – ${formatEuro(2100)}`, value: 2100 },
-          ]}
-        />
+        <HybridDrgCalculator procedures={proceduresBySection.gynaekologie} />
       </div>
     ),
   },
   {
     id: 'hno',
     title: 'HNO (Septum/NNH & Radiofrequenz)',
-    subtitle: 'D30Z – Septum/NNH',
+    subtitle: 'Hybrid-DRG-Katalog 2025/2026',
     content: (
       <div className="accordion-content">
         <p>
@@ -350,16 +288,14 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
         </div>
-        <FachbereichCalculator
-          pauschalen={[{ label: `D30Z – Septum/NNH – ${formatEuro(1650)}`, value: 1650 }]}
-        />
+        <HybridDrgCalculator procedures={proceduresBySection.hno} />
       </div>
     ),
   },
   {
     id: 'proktologie',
-    title: 'Proktologie (Hämorrhoiden)',
-    subtitle: 'G23B – Hämorrhoiden',
+    title: 'Proktologie (Fisteln & Rekonstruktion)',
+    subtitle: 'Hybrid-DRG-Katalog 2025/2026',
     content: (
       <div className="accordion-content">
         <p>
@@ -385,16 +321,14 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
         </div>
-        <FachbereichCalculator
-          pauschalen={[{ label: `G23B – Hämorrhoiden – ${formatEuro(1300)}`, value: 1300 }]}
-        />
+        <HybridDrgCalculator procedures={proceduresBySection.proktologie} />
       </div>
     ),
   },
   {
     id: 'gastroenterologie',
     title: 'Gastroenterologie (ERCP & Koloskopie)',
-    subtitle: 'H41N/M – ERCP & Koloskopie',
+    subtitle: 'Hybrid-DRG-Katalog 2025/2026',
     content: (
       <div className="accordion-content">
         <p>
@@ -420,13 +354,28 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
         </div>
-        <FachbereichCalculator
-          pauschalen={[{ label: `H41N/M – ERCP – ${formatEuro(1650)}`, value: 1650 }]}
-        />
+        <HybridDrgCalculator procedures={proceduresBySection.gastroenterologie} />
       </div>
     ),
   },
 ]
+
+if (proceduresBySection.weitere.length) {
+  specialties.push({
+    id: 'weitere',
+    title: 'Weitere Fachbereiche',
+    subtitle: 'Hybrid-DRG-Katalog 2025/2026',
+    content: (
+      <div className="accordion-content">
+        <p>
+          Weitere Hybrid-DRG-Codes aus dem Katalog 2025/2026, die nicht eindeutig einem der
+          Hauptfachbereiche zugeordnet werden konnten.
+        </p>
+        <HybridDrgCalculator procedures={proceduresBySection.weitere} />
+      </div>
+    ),
+  })
+}
 
 function FachbereichePage() {
   const baseUrl = import.meta.env.BASE_URL
@@ -468,6 +417,11 @@ function FachbereichePage() {
       <section className="section">
         <div className="container" id="accordion">
           <Accordion items={specialties} />
+          <p className="global-disclaimer">
+            Hinweis: Alle Werte basieren auf der Fallpauschalenverordnung 2026 (Anlage 1a).
+            Änderungen, Irrtümer und Übertragungsfehler vorbehalten. Die finale Abrechnung erfordert
+            eine korrekte medizinische Kodierung (OPS/ICD).
+          </p>
         </div>
       </section>
     </div>
