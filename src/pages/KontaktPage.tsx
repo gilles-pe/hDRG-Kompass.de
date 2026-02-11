@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function KontaktPage() {
   return (
     <div className="page">
@@ -9,7 +11,7 @@ function KontaktPage() {
           </p>
           <form
             className="form"
-            action="mailto:gilles.penning@gmail.com"
+            action="mailto:info@hdrg-kompass.de"
             method="post"
             encType="text/plain"
           >
@@ -29,6 +31,9 @@ function KontaktPage() {
               Nachricht senden
             </button>
           </form>
+          <div className="partner-access-link">
+            <Link to="/partner-access">Partner Access</Link>
+          </div>
         </div>
       </section>
     </div>

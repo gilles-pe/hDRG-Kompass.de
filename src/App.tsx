@@ -5,6 +5,7 @@ import HybridDrgPage from './pages/HybridDrgPage'
 import PraxisPage from './pages/PraxisPage'
 import FachbereichePage from './pages/FachbereichePage'
 import KontaktPage from './pages/KontaktPage'
+import PartnerAccessPage from './pages/PartnerAccessPage'
 import ImpressumPage from './pages/ImpressumPage'
 import DatenschutzPage from './pages/DatenschutzPage'
 import './App.css'
@@ -19,6 +20,7 @@ const router = createHashRouter([
       { path: 'praxis', element: <PraxisPage /> },
       { path: 'fachbereiche', element: <FachbereichePage /> },
       { path: 'kontakt', element: <KontaktPage /> },
+      { path: 'partner-access', element: <PartnerAccessPage /> },
       { path: 'impressum', element: <ImpressumPage /> },
       { path: 'datenschutz', element: <DatenschutzPage /> },
       { path: '*', element: <HomePage /> },
