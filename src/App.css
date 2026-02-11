@@ -1008,9 +1008,6 @@
   color: #f5fbfb;
 }
 
-.partner-hero h1 span {
-  color: #254347;
-}
 
 .partner-hero .hero-lead {
   color: rgba(255, 255, 255, 0.82);
@@ -1025,7 +1022,7 @@
 }
 
 .partner-hero h1 span {
-  color: var(--secondary);
+  color: #254347;
 }
 
 .partner-section-header {
