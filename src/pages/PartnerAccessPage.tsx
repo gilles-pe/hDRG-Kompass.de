@@ -175,7 +175,7 @@ function PartnerAccessPage() {
         new Chart(capacityRef.current, {
           type: 'bar',
           data: {
-            labels: ['Jahr 1', 'Jahr 2', 'Jahr 3', 'Jahr 4', 'Jahr 5'],
+            labels: ['2026', '2027', '2028', '2029', '2030'],
             datasets: [
               {
                 label: 'Standardkapazität',
@@ -368,10 +368,10 @@ function PartnerAccessPage() {
         <div className="container">
           <div className="partner-grid partner-grid--reverse">
             <div className="partner-card">
-              <h3>Enablement durch Prozesse & KI</h3>
+              <h3>Enablement durch Prozesse, KI & Plattform</h3>
               <p>
                 Ohne Unterstützung fehlen Praxen oft die Kapazitäten für komplexe Eingriffe. Partner
-                Access befähigt Teams und erhöht die mögliche Fallzahl.
+                Access befähigt Teams über KI und Plattformlogik – mit Wirkung bis 2030.
               </p>
               <div className="partner-chart">
                 <canvas ref={capacityRef} />
