@@ -1273,6 +1273,380 @@
   color: var(--primary);
 }
 
+.partner-access-page .partner-hero {
+  min-height: 440px;
+  padding: 2.8rem 0 3rem;
+}
+
+.partner-access-page .partner-hero-media {
+  background-size: cover;
+  background-position: right center;
+  filter: saturate(1.03) contrast(1.02);
+}
+
+.partner-access-page .partner-hero-overlay {
+  background: linear-gradient(
+    108deg,
+    rgba(7, 33, 38, 0.95) 0%,
+    rgba(7, 33, 38, 0.82) 35%,
+    rgba(15, 93, 100, 0.54) 72%,
+    rgba(42, 169, 160, 0.28) 100%
+  );
+}
+
+.partner-access-page .partner-hero-content {
+  max-width: 860px;
+  gap: 0.7rem;
+}
+
+.partner-access-page .partner-hero .eyebrow {
+  margin-bottom: 0.2rem;
+}
+
+.partner-access-page .partner-hero h1 {
+  margin-top: 0.1rem;
+}
+
+.partner-access-page .partner-hero .partner-hero-market {
+  color: #ffd06d;
+}
+
+.partner-access-page .partner-hero .partner-hero-hybrid {
+  color: #f5fbfb;
+}
+
+.partner-access-page .partner-hero .hero-lead {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.customer-access-page .partner-hero {
+  min-height: 500px;
+  padding: 3.2rem 0 3.4rem;
+}
+
+.customer-access-page .partner-hero-media {
+  background-size: cover;
+  background-position: right center;
+  filter: saturate(1.05) contrast(1.03);
+}
+
+.customer-access-page .partner-hero-overlay {
+  background: linear-gradient(
+    108deg,
+    rgba(7, 33, 38, 0.95) 0%,
+    rgba(7, 33, 38, 0.82) 35%,
+    rgba(15, 93, 100, 0.54) 72%,
+    rgba(42, 169, 160, 0.28) 100%
+  );
+}
+
+.customer-access-page .partner-hero-content {
+  max-width: 860px;
+  gap: 0.7rem;
+}
+
+.customer-access-page .partner-hero h1 span {
+  color: #ffd06d;
+}
+
+.customer-access-page .partner-hero .eyebrow {
+  margin-bottom: 0.2rem;
+}
+
+.customer-access-page .partner-hero h1 {
+  margin-top: 0.1rem;
+}
+
+.customer-access-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.customer-access-proof span {
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+}
+
+.customer-access-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.customer-access-hero-stats {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.customer-access-hero-stat {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.07));
+  padding: 0.9rem 1rem;
+  display: grid;
+  gap: 0.2rem;
+  animation: customer-rise 0.65s ease both;
+}
+
+.customer-access-hero-stat:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.customer-access-hero-stat:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.customer-access-hero-stat strong {
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.customer-access-hero-stat small {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.35;
+}
+
+.customer-section-intro {
+  max-width: 760px;
+  margin-bottom: 1.2rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.customer-section-intro h2 {
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+}
+
+.customer-focus-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.customer-focus-card {
+  border-radius: 18px;
+  border: 1px solid rgba(15, 93, 100, 0.16);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(237, 247, 247, 0.88));
+  box-shadow: 0 16px 32px rgba(8, 36, 41, 0.08);
+  padding: 1.25rem 1.2rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.customer-focus-card h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #0d4a50;
+}
+
+.customer-focus-card p {
+  margin: 0;
+  color: #4e6468;
+}
+
+.customer-main-grid {
+  margin-top: 1.35rem;
+}
+
+.customer-access-page .partner-card {
+  border: 1px solid rgba(15, 93, 100, 0.15);
+  box-shadow: 0 18px 36px rgba(8, 36, 41, 0.1);
+}
+
+.customer-access-page .partner-section--light {
+  background: linear-gradient(
+    180deg,
+    rgba(15, 93, 100, 0.08) 0%,
+    rgba(42, 169, 160, 0.08) 55%,
+    rgba(255, 255, 255, 0.56) 100%
+  );
+}
+
+.customer-mini-metrics {
+  margin-top: 1rem;
+  gap: 0.8rem;
+}
+
+.customer-stat-card {
+  border-radius: 16px;
+  padding: 1rem 1.05rem;
+  box-shadow: none;
+  background: rgba(15, 93, 100, 0.05);
+}
+
+.customer-stat-card .partner-metric {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+
+.customer-stat-card .partner-metric span {
+  font-size: clamp(1.45rem, 2.1vw, 1.85rem);
+  line-height: 1.2;
+}
+
+.customer-stat-card .partner-metric small {
+  max-width: 24ch;
+}
+
+.customer-chart-card {
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.96), rgba(237, 247, 247, 0.94));
+}
+
+.customer-drg-chart {
+  position: relative;
+  height: 260px;
+}
+
+.customer-drg-fade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 64%,
+    rgba(255, 255, 255, 0.58) 84%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+}
+
+.customer-logic-grid .customer-logic-card {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.customer-profit-chart {
+  position: relative;
+}
+
+.customer-profit-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  gap: 0.2rem;
+}
+
+.customer-profit-label {
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+
+.customer-profit-label--spaced {
+  margin-top: 0.35rem;
+}
+
+.customer-profit-value {
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
+.customer-slider-panel {
+  margin-top: 0.8rem;
+  border-radius: 18px;
+  border: 1px solid rgba(15, 93, 100, 0.2);
+  background: linear-gradient(150deg, rgba(15, 93, 100, 0.08), rgba(255, 255, 255, 0.9));
+  padding: 1.1rem;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.customer-slider-row strong {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.93rem;
+}
+
+.customer-slider {
+  width: 100%;
+  accent-color: var(--primary);
+}
+
+.customer-profit-highlight {
+  text-align: center;
+  border-top: 1px dashed rgba(15, 93, 100, 0.25);
+  padding-top: 0.8rem;
+}
+
+.customer-profit-highlight h4 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.customer-profit-highlight p {
+  margin: 0.15rem 0 0;
+  font-weight: 700;
+}
+
+.customer-solution-grid {
+  gap: 1.1rem;
+}
+
+.customer-main-cta {
+  background: linear-gradient(130deg, rgba(15, 93, 100, 0.2), rgba(42, 169, 160, 0.14));
+  border: 1px solid rgba(15, 93, 100, 0.25);
+}
+
+.customer-spacer {
+  height: 2rem;
+}
+
+.customer-docease {
+  border: 1px solid rgba(15, 93, 100, 0.22);
+  background: linear-gradient(135deg, rgba(15, 93, 100, 0.1), rgba(255, 255, 255, 0.88));
+}
+
+.customer-docease-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+@keyframes customer-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .partner-access-page .partner-hero {
+    min-height: 0;
+    padding: 2.4rem 0 2.4rem;
+  }
+
+  .partner-access-page .partner-hero-media {
+    background-position: center;
+  }
+
+  .customer-access-page .partner-hero {
+    min-height: 0;
+    padding: 2.8rem 0 2.8rem;
+  }
+
+  .customer-access-page .partner-hero-media {
+    background-position: center;
+  }
+
+  .customer-access-proof span {
+    font-size: 0.78rem;
+  }
+}
+
 .footer {
   border-top: 1px solid rgba(220, 227, 232, 0.8);
   background: rgba(255, 255, 255, 0.7);
@@ -1296,6 +1670,22 @@
 
 .footer-note {
   color: var(--muted);
+}
+
+.footer-cta {
+  margin-top: 0.9rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.footer-cta-title {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.footer-cta .button {
+  width: fit-content;
 }
 
 .footer-links {

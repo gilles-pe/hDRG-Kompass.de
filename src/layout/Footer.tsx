@@ -7,6 +7,12 @@ function Footer() {
         <div>
           <div className="footer-brand">hDRG-Kompass.de</div>
           <p className="footer-note">Neutrale Informationsplattform zu Hybrid-DRG für Praxen.</p>
+          <div className="footer-cta">
+            <p className="footer-cta-title">Es kann so einfach sein</p>
+            <a className="button primary" href="mailto:info@hdrg-kompass.de">
+              Gespräch anfragen
+            </a>
+          </div>
         </div>
         <div className="footer-links">
           <Link to="/impressum">Impressum</Link>

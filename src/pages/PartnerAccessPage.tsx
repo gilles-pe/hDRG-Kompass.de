@@ -337,7 +337,7 @@ function PartnerAccessPage() {
   }, [])
 
   return (
-    <div className="page partner-access">
+    <div className="page partner-access partner-access-page">
       <header className="partner-hero">
         <div
           className="partner-hero-media"
@@ -351,9 +351,9 @@ function PartnerAccessPage() {
         <div className="container partner-hero-content">
           <span className="eyebrow">Partner Access</span>
           <h1>
-            Strategischer Zugang zum ambulanten Markt
+            Strategischer Zugang zum <span className="partner-hero-market">ambulanten Markt</span>
             <br />
-            <span>für Hybrid-DRG</span>
+            <span className="partner-hero-hybrid">für Hybrid-DRG</span>
           </h1>
           <p className="hero-lead">
             Der ambulante Markt verschiebt sich strukturell – jetzt entsteht das neue Volumen.
