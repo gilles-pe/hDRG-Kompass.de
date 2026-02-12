@@ -31,6 +31,7 @@ function PartnerAccessPage() {
   const fragmentationRef = useRef<HTMLCanvasElement | null>(null)
   const costRef = useRef<HTMLCanvasElement | null>(null)
   const capacityRef = useRef<HTMLCanvasElement | null>(null)
+  const catalogRef = useRef<HTMLCanvasElement | null>(null)
   const heroImageUrl = `${import.meta.env.BASE_URL}Arzthelferin_Rezeption.jpg`
 
   useEffect(() => {
@@ -208,6 +209,38 @@ function PartnerAccessPage() {
       )
     }
 
+    if (catalogRef.current) {
+      charts.push(
+        new Chart(catalogRef.current, {
+          type: 'bar',
+          data: {
+            labels: ['2024', '2025', '2026'],
+            datasets: [
+              {
+                label: 'Hybrid-DRG-Codes',
+                data: [12, 34, 103],
+                backgroundColor: ['rgba(148, 163, 184, 0.7)', 'rgba(42, 169, 160, 0.75)', 'rgba(15, 93, 100, 0.9)'],
+                borderRadius: 6,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: { stepSize: 20 },
+              },
+            },
+          },
+        })
+      )
+    }
+
     return () => {
       charts.forEach((chart) => chart.destroy())
       document.body.classList.remove('partner-access-bg')
@@ -234,8 +267,12 @@ function PartnerAccessPage() {
             <span>für Hybrid-DRG</span>
           </h1>
           <p className="hero-lead">
-            Der hDRG-Shift ist gesetzlich fixiert. Partner Access bündelt die ambulanten Strukturen,
-            macht das Volumen planbar und reduziert Ihren Cost-to-Serve – ohne Datenverlust.
+            Der ambulante Markt verschiebt sich strukturell – jetzt entsteht das neue Volumen.
+            <br />
+            <br />
+            Bis 2030 verlagert der Hybrid-DRG-Shift rund 2 Millionen Eingriffe aus den Kliniken in
+            den ambulanten Sektor. Sanoom bündelt die ambulanten Strukturen, öffnet Ihnen neue
+            Kundenwege und reduziert Ihren Cost-to-Serve.
           </p>
         </div>
       </header>
@@ -247,25 +284,49 @@ function PartnerAccessPage() {
               Der <span className="partner-gradient-text">Volumen-Shift</span>
             </h2>
             <p>
-              § 115f SGB V verschiebt komplexe Eingriffe in die Ambulanz. In den nächsten Jahren
-              bewegen sich rund 2 Mio. Prozeduren dauerhaft in den ambulanten Markt.
+              Bis 2030 entsteht eine strukturelle Umverteilung von rund 2 Mio. Prozeduren in den
+              ambulanten Markt. Der Shift ist markteingreifend und dauerhaft.
             </p>
           </div>
           <div className="partner-grid">
             <div className="partner-card partner-card--accent">
               <h3>Größenordnung</h3>
               <p>
-                Das entspricht etwa 13 % aller chirurgischen Eingriffe in Deutschland. Der
-                ambulante Shift erreicht die Größenordnung eines nationalen OP-Marktes.
+                Der Wechsel zwischen DRG, EBM & Hybrid-DRG betrifft bereits 13 % aller chirurgischen
+                Eingriffe in Deutschland. Bis 2030 wird dieser ambulante Shift zur
+                marktbestimmenden Realität.
+                <br />
+                <br />
+                Sanoom bündelt Ihre ambulanten Strukturen, sichert die Planbarkeit der Volumina und
+                senkt proaktiv Ihren Cost-to-Serve – ohne Datenverlust und inklusive
+                Neukundengewinnung.
               </p>
               <div className="partner-metric">
                 <span>2 Mio.</span>
                 <small>Eingriffe pro Jahr</small>
               </div>
             </div>
+            <div className="partner-card partner-card--info">
+              <h3>Katalog-Dynamik</h3>
+              <p>
+                12 Codes in 2024, 34 in 2025 und ein Sprung auf 103 in 2026 markieren den Beginn
+                einer langfristigen Umverteilung. Schwerpunkte liegen in Kardiologie, Orthopädie,
+                Urologie, Gynäkologie und Chirurgie.
+              </p>
+              <div className="partner-chart partner-chart--small">
+                <canvas ref={catalogRef} />
+              </div>
+              <div className="partner-metric partner-metric--stacked">
+                <span>103</span>
+                <small>Hybrid-DRG-Positionen (2026)</small>
+              </div>
+            </div>
             <div className="partner-card">
               <h3>Marktvergleich</h3>
-              <p>Vergleich des Shift-Volumens mit einem Referenzmarkt.</p>
+              <p>
+                Das aus der DRG migrierende Volumen erreicht die Dimension des gesamten Schweizer
+                Marktes. Vor uns erschließt sich ein massives Marktpotenzial.
+              </p>
               <div className="partner-chart">
                 <canvas ref={marketShiftRef} />
               </div>
@@ -279,8 +340,9 @@ function PartnerAccessPage() {
           <div className="partner-section-header">
             <h2>Der Distribution Gap</h2>
             <p>
-              Das Krankenhausvertriebsteam erreicht das ambulante Long-Tail-Volumen nicht effizient.
-              Die Nachfrage fragmentiert – viele Praxen, geringe Einzelvolumina.
+              Bestehende Klinikvertriebe können den Shift nicht effizient abfangen. Die Nachfrage
+              zersplittert sich auf zehntausende Praxen & MVZ statt auf rund 1.600 Kliniken. Damit
+              explodieren Service- und Akquisitionskosten – Direktvertrieb wird unprofitabel.
             </p>
           </div>
           <div className="partner-grid">
@@ -343,22 +405,31 @@ function PartnerAccessPage() {
               </div>
             </div>
             <div className="partner-flow-note">
-              Ergebnis: Sie liefern effizient. Wir lösen die Fragmentierung. Sie behalten die Daten.
+              Sie liefern die Produkte. Wir sichern den Kundenzugang und lösen die Fragmentierung
+              auf. Die volle Kontrolle über Daten und Kunden bleibt bei Ihnen.
             </div>
           </div>
 
           <div className="partner-feature-grid">
             <div className="partner-card">
-              <h3>Effiziente Bündelung</h3>
-              <p>Planbares Volumen durch konsolidierte Nachfrage.</p>
+              <h3>Vertriebslücke schließen</h3>
+              <p>Digitale Infrastruktur für einen fragmentierten Markt.</p>
             </div>
             <div className="partner-card">
-              <h3>Transparente Daten</h3>
-              <p>Volle Sicht auf Endkunden, keine Intransparenz.</p>
+              <h3>Effizienz</h3>
+              <p>Bündelung senkt Service- und Akquisitionskosten radikal.</p>
             </div>
             <div className="partner-card">
-              <h3>Direkter Zugang</h3>
-              <p>Wir öffnen die ambulante Entscheiderebene.</p>
+              <h3>Transparenz</h3>
+              <p>Dropshipping sichert Datenhoheit und Markenpräsenz.</p>
+            </div>
+            <div className="partner-card">
+              <h3>KI & Logistik</h3>
+              <p>Unsere Plattform befähigt Praxen zu komplexen Workflows.</p>
+            </div>
+            <div className="partner-card">
+              <h3>Marktkapazität</h3>
+              <p>Wir schaffen Nachfragefähigkeit – nicht nur einen Kanal.</p>
             </div>
           </div>
         </div>
