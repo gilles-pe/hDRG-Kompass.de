@@ -16,7 +16,7 @@ function HomePage() {
   const logoUrl = `${import.meta.env.BASE_URL}hdrg_kompass.svg`
   const heroImageUrl = `${import.meta.env.BASE_URL}DoctorTablet.jpg`
   return (
-    <div className="page">
+    <div className="page home-page">
       <section className="hero">
         <div className="hero-bleed">
           <div
@@ -36,6 +36,10 @@ function HomePage() {
                 Ambulantisierung verändert Versorgungsstrukturen. hDRG-Kompass.de bietet Fakten,
                 Praxisperspektive und eine klare Orientierungshilfe.
               </p>
+              <div className="home-hero-highlights">
+                <span>103 Hybrid-DRG Codes ab 2026</span>
+                <span>ca. 2 Mio. Eingriffe bis 2030 ambulant</span>
+              </div>
               <div className="hero-actions">
                 <Link className="button primary" to="/fachbereiche">
                   Fachbereiche ansehen
@@ -79,9 +83,12 @@ function HomePage() {
           <div>
             <h2>Warum Hybrid-DRG jetzt relevant ist</h2>
             <p>
-              Die Krankenhausreform und neue hDRG-Pauschalen verlagern komplexe Eingriffe in die Ambulanz.
-              Für Praxen bedeutet das mehr Volumen, aber auch neue Anforderungen an Prozesse, Materialkosten
-              und Teamkapazitäten.
+              Die Krankenhausreform und die neuen hDRG-Pauschalen verlagern bis 2030 rund 2 Millionen
+              Eingriffe in den ambulanten Bereich. Mit bereits 103 Hybrid-DRG-Codes (ab 2026) entsteht für
+              Praxen damit eine echte Wachstumschance: mehr Fälle, mehr Umsatzpotenzial und die Möglichkeit,
+              sich als leistungsstarker Versorger klar zu positionieren. Damit dieses Volumen im Alltag
+              profitabel umgesetzt wird, braucht das Team gezielte Unterstützung bei Prozessen,
+              Materialmanagement und OP-Organisation.
             </p>
           </div>
           <div className="card">

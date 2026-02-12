@@ -20,7 +20,7 @@ function Header() {
           >
             Fachbereiche
           </NavLink>
-          <NavLink to="/customer-access">Customer Access</NavLink>
+          <NavLink to="/customer-access">Praxis Organisation</NavLink>
           <NavLink to="/kontakt">Kontakt</NavLink>
         </nav>
         <NavLink className="nav-cta" to="/fachbereiche">
