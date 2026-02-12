@@ -27,6 +27,35 @@ Chart.register(
   Tooltip
 )
 
+type FlowIconType = 'supplier' | 'platform' | 'practice'
+
+function FlowIcon({ type }: { type: FlowIconType }) {
+  if (type === 'supplier') {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <path d="M3 21h18M4 21V9l8-4 8 4v12" />
+        <path d="M9 21v-4h6v4M8 12h2M12 12h2M16 12h2M8 15h2M12 15h2M16 15h2" />
+      </svg>
+    )
+  }
+
+  if (type === 'platform') {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18M6 7.5h12M6 16.5h12" />
+      </svg>
+    )
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <rect x="4" y="4" width="16" height="16" rx="2.5" />
+      <path d="M8 20v-4h8v4M8 8h2M12 8h2M16 8h0M8 12h2M12 12h2M16 12h0" />
+    </svg>
+  )
+}
+
 function PartnerAccessPage() {
   const marketShiftRef = useRef<HTMLCanvasElement | null>(null)
   const fragmentationRef = useRef<HTMLCanvasElement | null>(null)
@@ -466,40 +495,62 @@ function PartnerAccessPage() {
               Hand. So entsteht ein skalierbarer, messbarer Zugang zum ambulanten Markt.
             </p>
           </div>
-          <div className="partner-flow">
+          <div className="partner-flow partner-flow--solution">
             <div className="partner-flow-strip">
-              <div className="partner-flow-card">
-                <span className="partner-flow-icon">🏭</span>
+              <div className="partner-flow-card partner-flow-card--supplier">
+                <span className="partner-flow-icon" aria-hidden>
+                  <FlowIcon type="supplier" />
+                </span>
                 <h4>Lieferant</h4>
                 <p>Zentrale Bulk-Anbindung</p>
               </div>
-              <div className="partner-flow-card partner-flow-card--primary">
-                <span className="partner-flow-icon">🌐</span>
+              <div className="partner-flow-connector partner-flow-connector--bulk" aria-hidden>
+                <span>Bulk</span>
+              </div>
+              <div className="partner-flow-card partner-flow-card--primary partner-flow-card--platform">
+                <span className="partner-flow-icon" aria-hidden>
+                  <FlowIcon type="platform" />
+                </span>
                 <h4>Sanoom Platform</h4>
                 <p>
                   Demand Aggregation
                   <br />
                   &amp; Smart Logistics
                 </p>
+                <div className="partner-flow-value">1 Anbindung - Zugang zu 10.000+ Praxen &amp; MVZ</div>
+              </div>
+              <div className="partner-flow-connector partner-flow-connector--distribution" aria-hidden>
+                <span>Dropshipping</span>
               </div>
               <div className="partner-flow-practice-grid">
                 <div className="partner-flow-card partner-flow-card--practice">
-                  <span className="partner-flow-icon">🏥</span>
-                  <h4>Praxis A</h4>
+                  <span className="partner-flow-icon" aria-hidden>
+                    <FlowIcon type="practice" />
+                  </span>
+                  <h4>Urologie Praxis</h4>
+                  <p>Long-Tail Account</p>
                 </div>
                 <div className="partner-flow-card partner-flow-card--practice">
-                  <span className="partner-flow-icon">🏥</span>
-                  <h4>Praxis B</h4>
+                  <span className="partner-flow-icon" aria-hidden>
+                    <FlowIcon type="practice" />
+                  </span>
+                  <h4>Orthopaedie Zentrum</h4>
+                  <p>Regio-Cluster</p>
                 </div>
                 <div className="partner-flow-card partner-flow-card--practice">
-                  <span className="partner-flow-icon">🏥</span>
-                  <h4>Praxis C</h4>
+                  <span className="partner-flow-icon" aria-hidden>
+                    <FlowIcon type="practice" />
+                  </span>
+                  <h4>MVZ Verbund</h4>
+                  <p>Skalierbarer Zugang</p>
                 </div>
               </div>
             </div>
             <div className="partner-flow-note">
-              Sie liefern die Produkte. Wir sichern den Kundenzugang und lösen die Fragmentierung
-              auf. Die volle Kontrolle über Daten und Kunden bleibt bei Ihnen.
+              Eine Plattform, ein Prozess: Sie liefern Produkte, wir liefern planbaren Zugang und
+              senken den Aufwand im fragmentierten Markt. Fulfillment per Dropshipping oder über
+              unser Lager ist je nach Partnerpräferenz möglich. Datenhoheit und Customer Access
+              bleiben vollständig bei Ihnen.
             </div>
           </div>
 
@@ -545,13 +596,15 @@ function PartnerAccessPage() {
               <span className="eyebrow">Die Grundlage</span>
               <h2>Ambulante Kompetenz wird skalierbar.</h2>
               <p>
-                Wir reduzieren organisatorische Hürden, beschleunigen Prozesse und sichern die
+                Wir reduzieren organisatorische Hürden, beschleunigen Prozesse &amp; sichern die
                 Umsetzung im Praxisalltag.
               </p>
               <ul>
-                <li>Schulung von MFA und OP-Teams</li>
+                <li>Schulung von MFA- und OP-Teams</li>
                 <li>Standardisierte OP-Workflows</li>
                 <li>Verlässliche Logistik und Disposition</li>
+                <li>Fertige OP-Kits</li>
+                <li>Plattform zum Bestellmanagement für Kliniken</li>
               </ul>
             </div>
           </div>
