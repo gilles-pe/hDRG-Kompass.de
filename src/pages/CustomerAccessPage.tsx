@@ -30,6 +30,7 @@ function CustomerAccessPage() {
 
   const [efficiency, setEfficiency] = useState(12)
   const [procurement, setProcurement] = useState(20)
+  const [isDocEaseOpen, setIsDocEaseOpen] = useState(false)
   const fix = 40
 
   const profitPerc = useMemo(() => Math.max(0, 100 - fix - efficiency - procurement), [
@@ -42,6 +43,7 @@ function CustomerAccessPage() {
   )
 
   const heroImageUrl = `${import.meta.env.BASE_URL}DoctorTablet.jpg`
+  const docEaseTeaserUrl = `${import.meta.env.BASE_URL}DocEaseTeaser.jpg`
 
   useEffect(() => {
     document.body.classList.add('partner-access-bg')
@@ -313,8 +315,12 @@ function CustomerAccessPage() {
                   />
                 </label>
                 <div>
-                  <h4>{profitValue.toLocaleString('de-DE')} €</h4>
-                  <p>Tages-Profit bei 20k € Umsatz</p>
+                  <h4 style={{ fontWeight: 700, textAlign: 'center', fontSize: '1.4rem' }}>
+                    {profitValue.toLocaleString('de-DE')} €
+                  </h4>
+                  <p style={{ fontWeight: 700, textAlign: 'center' }}>
+                    Tages-Profit bei 20k € Umsatz
+                  </p>
                 </div>
               </div>
             </div>
@@ -384,12 +390,113 @@ function CustomerAccessPage() {
               steigenden Fallzahlen und ermöglicht Ihrem Team einen sicheren &amp; datenschutzkonformen
               Eintritt in die AI-Welt.
             </p>
-            <a className="button primary" href="mailto:info@hdrg-kompass.de">
-              DocEase Demo anfordern
+            <a className="button primary" href="https://docease.my-ai.coach/">
+              DocEase Demo Testen
             </a>
+            <div
+              style={{
+                marginTop: '1.5rem',
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '1.2rem',
+                alignItems: 'center',
+              }}
+            >
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() => setIsDocEaseOpen(true)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    setIsDocEaseOpen(true)
+                  }
+                }}
+                style={{
+                  maxWidth: '220px',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  border: '1px solid rgba(220, 227, 232, 0.8)',
+                  boxShadow: 'var(--shadow)',
+                  cursor: 'pointer',
+                }}
+                aria-label="DocEase Teaser vergrößern"
+              >
+                <img
+                  src={docEaseTeaserUrl}
+                  alt="DocEase Teaser"
+                  style={{ width: '100%', display: 'block' }}
+                />
+              </div>
+              <ul style={{ margin: 0, paddingLeft: '1.2rem' }}>
+                <li>gehärteter Chatassistent, DSVGO konform</li>
+                <li>Digitales Nachschlagewerk mit Ihren Praxis-SOPs</li>
+                <li>Digitaler Coach für Ihr Team</li>
+                <li>Trainingstool für Ihre Praxis / MVZ</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
+
+      {isDocEaseOpen && (
+        <div
+          role="button"
+          tabIndex={0}
+          onClick={() => setIsDocEaseOpen(false)}
+          onKeyDown={(event) => {
+            if (event.key === 'Escape' || event.key === 'Enter' || event.key === ' ') {
+              setIsDocEaseOpen(false)
+            }
+          }}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(8, 36, 41, 0.8)',
+            display: 'grid',
+            placeItems: 'center',
+            padding: '2rem',
+            zIndex: 999,
+          }}
+          aria-label="DocEase Teaser schließen"
+        >
+          <button
+            type="button"
+            aria-label="Schließen"
+            onClick={(event) => {
+              event.stopPropagation()
+              setIsDocEaseOpen(false)
+            }}
+            style={{
+              position: 'absolute',
+              top: '1.5rem',
+              right: '1.5rem',
+              width: '32px',
+              height: '32px',
+              borderRadius: '999px',
+              border: '1px solid rgba(255, 255, 255, 0.35)',
+              background: 'rgba(8, 36, 41, 0.65)',
+              color: '#fff',
+              fontSize: '18px',
+              fontWeight: 700,
+              lineHeight: 1,
+              cursor: 'pointer',
+            }}
+          >
+            ×
+          </button>
+          <img
+            src={docEaseTeaserUrl}
+            alt="DocEase Teaser groß"
+            style={{
+              maxWidth: 'min(1100px, 92vw)',
+              maxHeight: '80vh',
+              borderRadius: '18px',
+              boxShadow: '0 30px 70px rgba(0, 0, 0, 0.35)',
+              background: '#fff',
+            }}
+          />
+        </div>
+      )}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   BarController,
   BarElement,
@@ -32,7 +32,9 @@ function PartnerAccessPage() {
   const costRef = useRef<HTMLCanvasElement | null>(null)
   const capacityRef = useRef<HTMLCanvasElement | null>(null)
   const catalogRef = useRef<HTMLCanvasElement | null>(null)
+  const [isDocEaseOpen, setIsDocEaseOpen] = useState(false)
   const heroImageUrl = `${import.meta.env.BASE_URL}Arzthelferin_Rezeption.jpg`
+  const docEaseTeaserUrl = `${import.meta.env.BASE_URL}DocEaseTeaser.jpg`
 
   useEffect(() => {
     document.body.classList.add('partner-access-bg')
@@ -277,7 +279,7 @@ function PartnerAccessPage() {
         </div>
       </header>
 
-      <section className="section partner-section" id="shift">
+      <section className="section partner-section" id="shift" style={{ padding: '2.5rem 0' }}>
         <div className="container">
           <div className="partner-section-header">
             <h2>
@@ -335,7 +337,7 @@ function PartnerAccessPage() {
         </div>
       </section>
 
-      <section className="section partner-section" id="gap">
+      <section className="section partner-section" id="gap" style={{ padding: '2.5rem 0' }}>
         <div className="container">
           <div className="partner-section-header">
             <h2>Der Distribution Gap</h2>
@@ -364,7 +366,11 @@ function PartnerAccessPage() {
         </div>
       </section>
 
-      <section className="section partner-section partner-section--light" id="solution">
+      <section
+        className="section partner-section partner-section--light"
+        id="solution"
+        style={{ padding: '2.5rem 0' }}
+      >
         <div className="container">
           <div className="partner-section-header">
             <h2>Die Lösung: Partner Access</h2>
@@ -435,7 +441,7 @@ function PartnerAccessPage() {
         </div>
       </section>
 
-      <section className="section partner-section" id="enabler">
+      <section className="section partner-section" id="enabler" style={{ padding: '2.5rem 0' }}>
         <div className="container">
           <div className="partner-grid partner-grid--reverse">
             <div className="partner-card">
@@ -465,7 +471,7 @@ function PartnerAccessPage() {
         </div>
       </section>
 
-      <section className="section partner-section partner-section--cta">
+      <section className="section partner-section partner-section--cta" style={{ padding: '2rem 0' }}>
         <div className="container">
           <div className="partner-cta-card">
             <h2>Partner Access sichern</h2>
@@ -479,6 +485,126 @@ function PartnerAccessPage() {
           </div>
         </div>
       </section>
+
+      <section className="section partner-section" style={{ padding: '2rem 0' }}>
+        <div className="container">
+          <div className="partner-cta">
+            <span className="eyebrow">DocEase</span>
+            <h2>Intelligente Assistenz mit DocEase</h2>
+            <p>
+              Die Integration der DocEase-Assistenzsoftware entlastet Ihre MFA direkt am Arbeitsplatz.
+              Durch standardisierte, digitale Unterstützung bei komplexen administrativen Abläufen
+              wird die kognitive Belastung gesenkt. Dies sichert eine hohe Prozessqualität bei
+              steigenden Fallzahlen und ermöglicht Ihrem Team einen sicheren &amp; datenschutzkonformen
+              Eintritt in die AI-Welt.
+            </p>
+            <a className="button primary" href="https://docease.my-ai.coach/">
+              DocEase Demo Testen
+            </a>
+            <div
+              style={{
+                marginTop: '1.5rem',
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '1.2rem',
+                alignItems: 'center',
+              }}
+            >
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() => setIsDocEaseOpen(true)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    setIsDocEaseOpen(true)
+                  }
+                }}
+                style={{
+                  maxWidth: '220px',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  border: '1px solid rgba(220, 227, 232, 0.8)',
+                  boxShadow: 'var(--shadow)',
+                  cursor: 'pointer',
+                }}
+                aria-label="DocEase Teaser vergrößern"
+              >
+                <img
+                  src={docEaseTeaserUrl}
+                  alt="DocEase Teaser"
+                  style={{ width: '100%', display: 'block' }}
+                />
+              </div>
+              <ul style={{ margin: 0, paddingLeft: '1.2rem' }}>
+                <li>gehärteter Chatassistent, DSVGO konform</li>
+                <li>Digitales Nachschlagewerk mit Ihren Praxis-SOPs</li>
+                <li>Digitaler Coach für Ihr Team</li>
+                <li>Trainingstool für Ihre Praxis / MVZ</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {isDocEaseOpen && (
+        <div
+          role="button"
+          tabIndex={0}
+          onClick={() => setIsDocEaseOpen(false)}
+          onKeyDown={(event) => {
+            if (event.key === 'Escape' || event.key === 'Enter' || event.key === ' ') {
+              setIsDocEaseOpen(false)
+            }
+          }}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(8, 36, 41, 0.8)',
+            display: 'grid',
+            placeItems: 'center',
+            padding: '2rem',
+            zIndex: 999,
+          }}
+          aria-label="DocEase Teaser schließen"
+        >
+          <button
+            type="button"
+            aria-label="Schließen"
+            onClick={(event) => {
+              event.stopPropagation()
+              setIsDocEaseOpen(false)
+            }}
+            style={{
+              position: 'absolute',
+              top: '1.5rem',
+              right: '1.5rem',
+              width: '32px',
+              height: '32px',
+              borderRadius: '999px',
+              border: '1px solid rgba(255, 255, 255, 0.35)',
+              background: 'rgba(8, 36, 41, 0.65)',
+              color: '#fff',
+              fontSize: '18px',
+              fontWeight: 700,
+              lineHeight: 1,
+              cursor: 'pointer',
+            }}
+          >
+            ×
+          </button>
+          <img
+            src={docEaseTeaserUrl}
+            alt="DocEase Teaser groß"
+            style={{
+              maxWidth: 'min(1100px, 92vw)',
+              maxHeight: '80vh',
+              borderRadius: '18px',
+              boxShadow: '0 30px 70px rgba(0, 0, 0, 0.35)',
+              background: '#fff',
+            }}
+          />
+        </div>
+      )}
     </div>
   )
 }
