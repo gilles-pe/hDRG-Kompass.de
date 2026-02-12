@@ -32,6 +32,9 @@ function KontaktPage() {
             </button>
           </form>
           <div className="partner-access-link">
+            <Link to="/customer-access">Customer Access</Link>
+          </div>
+          <div className="partner-access-link">
             <Link to="/partner-access">Partner Access</Link>
           </div>
         </div>
