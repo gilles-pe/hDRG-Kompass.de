@@ -12,6 +12,7 @@ import {
   PointElement,
   Tooltip,
 } from 'chart.js'
+import type { Plugin } from 'chart.js'
 
 Chart.register(
   BarController,
@@ -39,6 +40,87 @@ function PartnerAccessPage() {
   useEffect(() => {
     document.body.classList.add('partner-access-bg')
     const charts: Chart[] = []
+    const fragmentationHighlightPlugin: Plugin<'bubble'> = {
+      id: 'fragmentationHighlight',
+      afterDatasetsDraw: (chart) => {
+        const xScale = chart.scales.x
+        const yScale = chart.scales.y
+        if (!xScale || !yScale) return
+
+        const topLeftX = xScale.getPixelForValue(11)
+        const topLeftY = yScale.getPixelForValue(88)
+        const bottomRightX = xScale.getPixelForValue(76)
+        const bottomRightY = yScale.getPixelForValue(21)
+        const topLeftRadius = Math.min(Math.abs(xScale.getPixelForValue(22) - topLeftX), 60)
+        const bottomRightRadius = Math.min(Math.abs(xScale.getPixelForValue(95) - bottomRightX), 110)
+
+        const { ctx } = chart
+        const { left, right, top, bottom } = chart.chartArea
+        ctx.save()
+        ctx.strokeStyle = 'rgba(15, 93, 100, 0.28)'
+        ctx.lineWidth = 1.25
+        ctx.setLineDash([4, 6])
+
+        ctx.beginPath()
+        ctx.arc(topLeftX, topLeftY, topLeftRadius, 0, Math.PI * 2)
+        ctx.stroke()
+
+        ctx.strokeStyle = 'rgba(245, 165, 36, 0.55)'
+        ctx.beginPath()
+        ctx.arc(bottomRightX, bottomRightY, bottomRightRadius, 0, Math.PI * 2)
+        ctx.stroke()
+
+        ctx.setLineDash([])
+        ctx.font = "600 13px 'Poppins', sans-serif"
+        ctx.textAlign = 'left'
+
+        const topLeftLabel = 'Klinikvertrieb'
+        const bottomRightLabel = 'Sanoom Plattform Access'
+        const padX = 6
+
+        const topLeftTextX = Math.min(right - 120, topLeftX + topLeftRadius + 24)
+        const topLeftTextY = Math.max(top + 18, topLeftY - topLeftRadius + 8)
+        const topLeftWidth = ctx.measureText(topLeftLabel).width
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.68)'
+        ctx.fillRect(topLeftTextX - padX, topLeftTextY - 12, topLeftWidth + padX * 2, 18)
+        ctx.fillStyle = 'rgba(15, 93, 100, 0.85)'
+        ctx.fillText(topLeftLabel, topLeftTextX, topLeftTextY)
+
+        const bottomRightWidth = ctx.measureText(bottomRightLabel).width
+        const bottomRightTextX = Math.max(left + 6, bottomRightX - bottomRightRadius - bottomRightWidth - 12)
+        const bottomRightTextY = Math.min(bottom - 8, bottomRightY + 6)
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.68)'
+        ctx.fillRect(
+          bottomRightTextX - padX,
+          bottomRightTextY - 12,
+          bottomRightWidth + padX * 2,
+          18
+        )
+        ctx.fillStyle = 'rgba(245, 165, 36, 0.95)'
+        ctx.fillText(bottomRightLabel, bottomRightTextX, bottomRightTextY)
+
+        chart.data.datasets.forEach((dataset, datasetIndex) => {
+          const meta = chart.getDatasetMeta(datasetIndex)
+          const dataPoints = dataset.data as Array<{ label?: string }>
+          const isClinicDataset = datasetIndex === 0
+
+          ctx.font = "500 10px 'Poppins', sans-serif"
+          ctx.fillStyle = isClinicDataset ? 'rgba(15, 93, 100, 0.82)' : 'rgba(158, 100, 9, 0.8)'
+
+          meta.data.forEach((point, pointIndex) => {
+            const pointLabel = dataPoints[pointIndex]?.label
+            if (!pointLabel) return
+
+            const shiftX = isClinicDataset ? 14 : 8
+            const shiftY = isClinicDataset ? -8 : -5
+            const textX = Math.min(right - 4, Math.max(left + 4, point.x + shiftX))
+            const textY = Math.min(bottom - 4, Math.max(top + 10, point.y + shiftY))
+            ctx.fillText(pointLabel, textX, textY)
+          })
+        })
+        ctx.restore()
+      },
+    }
 
     if (marketShiftRef.current) {
       charts.push(
@@ -77,29 +159,30 @@ function PartnerAccessPage() {
       charts.push(
         new Chart(fragmentationRef.current, {
           type: 'bubble',
+          plugins: [fragmentationHighlightPlugin],
           data: {
             datasets: [
               {
                 label: 'Kliniken',
                 data: [
-                  { x: 10, y: 90, r: 28 },
-                  { x: 14, y: 82, r: 24 },
-                  { x: 8, y: 96, r: 26 },
+                  { x: 10, y: 90, r: 28, label: 'Uniklinik' },
+                  { x: 14, y: 82, r: 24, label: 'Katholisches Krankenhaus' },
+                  { x: 8, y: 96, r: 26, label: 'Staedtisches Krankenhaus' },
                 ],
                 backgroundColor: 'rgba(15, 93, 100, 0.75)',
               },
               {
                 label: 'Praxen',
                 data: [
-                  { x: 60, y: 20, r: 5 },
-                  { x: 66, y: 24, r: 4 },
-                  { x: 70, y: 15, r: 6 },
-                  { x: 82, y: 30, r: 5 },
-                  { x: 55, y: 12, r: 4 },
-                  { x: 75, y: 22, r: 5 },
-                  { x: 88, y: 18, r: 4 },
-                  { x: 92, y: 12, r: 5 },
-                  { x: 62, y: 34, r: 6 },
+                  { x: 60, y: 20, r: 5, label: 'Uro Klinik' },
+                  { x: 66, y: 24, r: 4, label: 'MVZ am Marktplatz' },
+                  { x: 70, y: 15, r: 6, label: 'Chirurgie West' },
+                  { x: 82, y: 30, r: 5, label: 'Orthozentrum Sued' },
+                  { x: 55, y: 12, r: 4, label: 'Praxis am Ring' },
+                  { x: 75, y: 22, r: 5, label: 'HNO Forum Mitte' },
+                  { x: 88, y: 18, r: 4, label: 'MVZ Stadtpark' },
+                  { x: 92, y: 12, r: 5, label: 'Tagesklinik Ost' },
+                  { x: 62, y: 34, r: 6, label: 'Zentrum Nord' },
                 ],
                 backgroundColor: 'rgba(245, 165, 36, 0.65)',
               },
@@ -112,7 +195,11 @@ function PartnerAccessPage() {
               legend: { position: 'bottom' },
               tooltip: {
                 callbacks: {
-                  label: (context) => context.dataset.label || '',
+                  label: (context) => {
+                    const point = context.raw as { label?: string }
+                    if (point?.label) return point.label
+                    return context.dataset.label || ''
+                  },
                 },
               },
             },
@@ -145,13 +232,13 @@ function PartnerAccessPage() {
               {
                 label: 'Direktvertrieb',
                 data: [85, 90, 95, 70],
-                backgroundColor: 'rgba(245, 165, 36, 0.75)',
+                backgroundColor: 'rgba(15, 93, 100, 0.85)',
                 borderRadius: 6,
               },
               {
-                label: 'Partner Access',
+                label: 'Sanoom Plattform Access',
                 data: [20, 15, 25, 10],
-                backgroundColor: 'rgba(15, 93, 100, 0.85)',
+                backgroundColor: 'rgba(245, 165, 36, 0.75)',
                 borderRadius: 6,
               },
             ],
