@@ -384,8 +384,8 @@ function FachbereichePage() {
   return (
     <div className="page">
       <section className="section fach-hero">
-        <div className="container split">
-          <div>
+        <div className="container split fach-hero-layout">
+          <div className="fach-hero-copy">
             <p className="eyebrow">Fachbereiche</p>
             <h1>Fachbereiche für den ambulanten OP-Betrieb</h1>
             <p className="hero-lead">
@@ -402,6 +402,11 @@ function FachbereichePage() {
               unverbindlich informieren. Wir stehen Ihnen für einen fachlichen Austausch und zur
               Klärung Ihrer Fragen gerne zur Verfügung.
             </p>
+            <div className="fach-hero-meta">
+              <span>12 Fachbereiche</span>
+              <span>hDRG-Katalog 2025/2026</span>
+              <span>inkl. OP-Kalkulation</span>
+            </div>
           </div>
           <div className="hero-visuals">
             <div

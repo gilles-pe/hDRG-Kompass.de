@@ -109,7 +109,57 @@
 }
 
 .fach-hero {
-  padding: 4.5rem 0 3rem;
+  position: relative;
+  padding: 4.2rem 0 3.2rem;
+  background: linear-gradient(180deg, rgba(15, 93, 100, 0.1), rgba(15, 93, 100, 0.04));
+  overflow: hidden;
+}
+
+.fach-hero::before {
+  content: '';
+  position: absolute;
+  left: -220px;
+  top: -170px;
+  width: 520px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(42, 169, 160, 0.2), rgba(42, 169, 160, 0));
+  pointer-events: none;
+}
+
+.fach-hero-layout {
+  position: relative;
+  z-index: 1;
+  gap: 2.2rem;
+  align-items: stretch;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.fach-hero-copy {
+  display: flex;
+  flex-direction: column;
+  padding: 1.55rem 1.65rem;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.56);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 24px 50px rgba(11, 53, 57, 0.12);
+  backdrop-filter: blur(8px);
+  height: 100%;
+}
+
+.fach-hero .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.32rem 0.72rem;
+  letter-spacing: 0.15rem;
+  background: rgba(15, 93, 100, 0.12);
+  border: 1px solid rgba(15, 93, 100, 0.2);
+}
+
+.fach-hero h1 {
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  line-height: 1.08;
 }
 
 .hero-inner {
@@ -521,30 +571,77 @@
 }
 
 .fach-hero .hero-photo {
-  min-height: 300px;
-  aspect-ratio: 16 / 10;
+  min-height: 100%;
+  height: 100%;
+  aspect-ratio: auto;
   background-size: cover;
-  background-position: 25% 80%;
-  box-shadow: 0 22px 44px rgba(15, 93, 100, 0.14);
+  background-position: 42% 52%;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 28px 55px rgba(10, 50, 54, 0.2);
+}
+
+.fach-hero .hero-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(138deg, rgba(4, 24, 28, 0.36), rgba(4, 24, 28, 0.04));
 }
 
 .fach-hero .hero-visuals {
-  justify-self: end;
-  max-width: 520px;
+  justify-self: stretch;
+  max-width: none;
+  height: 100%;
 }
 
 @media (max-width: 900px) {
+  .fach-hero-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .fach-hero-copy {
+    padding: 1.2rem 1.15rem;
+  }
+
   .fach-hero .hero-photo {
-    min-height: 230px;
+    min-height: 260px;
+    height: 260px;
+    aspect-ratio: 16 / 11;
     background-position: 50% 50%;
   }
   .fach-hero .hero-visuals {
     max-width: 100%;
+    justify-self: stretch;
   }
 }
 
 .fach-hero .hero-lead {
-  max-width: 46ch;
+  max-width: 50ch;
+  margin-bottom: 0.95rem;
+  color: rgba(30, 50, 57, 0.9);
+}
+
+.fach-hero .muted {
+  color: rgba(40, 59, 65, 0.86);
+}
+
+.fach-hero-meta {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.fach-hero-meta span {
+  padding: 0.4rem 0.72rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(9, 62, 67, 0.95);
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(15, 93, 100, 0.24);
+  box-shadow: 0 8px 20px rgba(13, 61, 66, 0.08);
 }
 
 .fach-hero .hero-actions {
@@ -562,6 +659,11 @@
 @media (max-width: 720px) {
   .fach-hero .hero-actions {
     grid-template-columns: 1fr;
+  }
+
+  .fach-hero-meta span {
+    width: 100%;
+    text-align: center;
   }
 }
 
