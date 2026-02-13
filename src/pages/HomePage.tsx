@@ -61,7 +61,7 @@ function HomePage() {
                     <strong>Wachstum:</strong> steigendes ambulantes OP-Volumen
                   </li>
                   <li>
-                    <strong>Positionierung:</strong> sichtbarer Qualitätsvorteil in der Region
+                    <strong>Positionierung:</strong> Sichtbarkeit in der Region
                   </li>
                 </ul>
                 <Link className="home-hero-panel-link" to="/fachbereiche">
