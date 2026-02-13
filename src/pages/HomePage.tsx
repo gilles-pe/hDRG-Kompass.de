@@ -14,7 +14,7 @@ const fachbereiche = [
 
 function HomePage() {
   const logoUrl = `${import.meta.env.BASE_URL}hdrg_kompass.svg`
-  const heroImageUrl = `${import.meta.env.BASE_URL}DoctorTablet.jpg`
+  const heroImageUrl = `${import.meta.env.BASE_URL}Ambulantes%20OP%20Zentrum%20Hero%20Pic.jpg`
   return (
     <div className="page home-page">
       <section className="hero">
@@ -26,28 +26,48 @@ function HomePage() {
             }}
           />
           <div className="container hero-bleed-content">
-            <div className="hero-glass">
-              <div className="hero-kicker">
-                <img className="hero-logo" src={logoUrl} alt="hDRG-Kompass Logo" />
-                <p className="eyebrow">Leitfaden für Praxen und MVZ</p>
+            <div className="home-hero-layout">
+              <div className="hero-glass">
+                <div className="hero-kicker">
+                  <img className="hero-logo" src={logoUrl} alt="hDRG-Kompass Logo" />
+                  <p className="eyebrow">Leitfaden für Praxen und MVZ</p>
+                </div>
+                <h1>Hybrid-DRG verständlich für Praxen</h1>
+                <p className="hero-lead">
+                  Ambulantisierung verändert Versorgungsstrukturen. hDRG-Kompass.de bietet Fakten,
+                  Praxisperspektive und eine klare Orientierungshilfe.
+                </p>
+                <div className="home-hero-highlights">
+                  <span>103 Hybrid-DRG Codes ab 2026</span>
+                  <span>ca. 2 Mio. Eingriffe bis 2030 ambulant</span>
+                </div>
+                <div className="hero-actions">
+                  <Link className="button primary" to="/fachbereiche">
+                    Fachbereiche ansehen
+                  </Link>
+                  <Link className="button secondary" to="/hybrid-drg">
+                    Hybrid-DRG erklärt
+                  </Link>
+                </div>
               </div>
-              <h1>Hybrid-DRG verständlich für Praxen</h1>
-              <p className="hero-lead">
-                Ambulantisierung verändert Versorgungsstrukturen. hDRG-Kompass.de bietet Fakten,
-                Praxisperspektive und eine klare Orientierungshilfe.
-              </p>
-              <div className="home-hero-highlights">
-                <span>103 Hybrid-DRG Codes ab 2026</span>
-                <span>ca. 2 Mio. Eingriffe bis 2030 ambulant</span>
-              </div>
-              <div className="hero-actions">
-                <Link className="button primary" to="/fachbereiche">
-                  Fachbereiche ansehen
+              <aside className="home-hero-panel" aria-label="Hybrid-DRG Kennzahlen">
+                <p className="home-hero-panel-eyebrow">Ambulantes OP Zentrum</p>
+                <h2>Ihre Chancen im Überblick</h2>
+                <ul className="home-hero-panel-list">
+                  <li>
+                    <strong>Umsatzhebel:</strong> planbare hDRG-Pauschalen pro Fall
+                  </li>
+                  <li>
+                    <strong>Wachstum:</strong> steigendes ambulantes OP-Volumen
+                  </li>
+                  <li>
+                    <strong>Positionierung:</strong> sichtbarer Qualitätsvorteil in der Region
+                  </li>
+                </ul>
+                <Link className="home-hero-panel-link" to="/fachbereiche">
+                  Zu den Fachbereichen
                 </Link>
-                <Link className="button secondary" to="/hybrid-drg">
-                  Hybrid-DRG erklärt
-                </Link>
-              </div>
+              </aside>
             </div>
           </div>
         </div>
