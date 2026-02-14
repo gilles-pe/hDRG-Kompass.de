@@ -24,6 +24,10 @@ function Header() {
     setOpenedOnLocationKey(null)
   }
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   const toggleMenu = () => {
     setOpenedOnLocationKey((currentKey) => (currentKey === location.key ? null : location.key))
   }
@@ -73,7 +77,7 @@ function Header() {
             </NavLink>
           ))}
         </nav>
-        <NavLink className="nav-cta desktop-cta" to="/fachbereiche">
+        <NavLink className="nav-cta desktop-cta" to="/fachbereiche" onClick={scrollToTop}>
           Zu den Fachbereichen
         </NavLink>
         <button
@@ -91,7 +95,14 @@ function Header() {
       <div className={`mobile-nav-shell${isMenuOpen ? ' is-open' : ''}`} aria-hidden={!isMenuOpen}>
         <div className="container">
           <nav className="mobile-nav" id="mobile-nav-panel" aria-label="Hauptnavigation">
-            <NavLink className="nav-cta mobile-nav-cta" to="/fachbereiche" onClick={closeMenu}>
+            <NavLink
+              className="nav-cta mobile-nav-cta"
+              to="/fachbereiche"
+              onClick={() => {
+                closeMenu()
+                scrollToTop()
+              }}
+            >
               Zu den Fachbereichen
             </NavLink>
             {NAV_ITEMS.map((item) => (
