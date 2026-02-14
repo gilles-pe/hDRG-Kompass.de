@@ -22,6 +22,8 @@ Chart.register(
   Tooltip
 )
 
+const FIX_COST_PERCENT = 40
+
 function CustomerAccessPage() {
   const drgChartRef = useRef<HTMLCanvasElement | null>(null)
   const marginChartRef = useRef<HTMLCanvasElement | null>(null)
@@ -31,9 +33,7 @@ function CustomerAccessPage() {
   const [efficiency, setEfficiency] = useState(12)
   const [procurement, setProcurement] = useState(10)
   const [isDocEaseOpen, setIsDocEaseOpen] = useState(false)
-  const fix = 40
-
-  const profitPerc = useMemo(() => Math.max(0, 100 - fix - efficiency - procurement), [
+  const profitPerc = useMemo(() => Math.max(0, 100 - FIX_COST_PERCENT - efficiency - procurement), [
     efficiency,
     procurement,
   ])
@@ -46,20 +46,23 @@ function CustomerAccessPage() {
   const docEaseTeaserUrl = `${import.meta.env.BASE_URL}DocEaseTeaser.jpg`
 
   useEffect(() => {
+    const drgCanvas = drgChartRef.current
+    const marginCanvas = marginChartRef.current
+
     document.body.classList.add('partner-access-bg')
-    if (drgChartRef.current) {
-      const existingCanvasChart = Chart.getChart(drgChartRef.current)
+    if (drgCanvas) {
+      const existingCanvasChart = Chart.getChart(drgCanvas)
       if (existingCanvasChart) {
         existingCanvasChart.destroy()
       }
       const existing = drgChartInstance.current
-      if (existing && existing.canvas === drgChartRef.current) {
+      if (existing && existing.canvas === drgCanvas) {
         // Chart already initialized for this canvas.
       } else {
         if (existing) {
           existing.destroy()
         }
-        drgChartInstance.current = new Chart(drgChartRef.current, {
+        drgChartInstance.current = new Chart(drgCanvas, {
           type: 'bar',
           data: {
             labels: ['2024', '2025', '2026', '2027', '2028', '2029'],
@@ -136,25 +139,25 @@ function CustomerAccessPage() {
       }
     }
 
-    if (marginChartRef.current) {
-      const existingCanvasChart = Chart.getChart(marginChartRef.current)
+    if (marginCanvas) {
+      const existingCanvasChart = Chart.getChart(marginCanvas)
       if (existingCanvasChart) {
         existingCanvasChart.destroy()
       }
       const existing = marginChartInstance.current
-      if (existing && existing.canvas === marginChartRef.current) {
+      if (existing && existing.canvas === marginCanvas) {
         // Chart already initialized for this canvas.
       } else {
         if (existing) {
           existing.destroy()
         }
-        marginChartInstance.current = new Chart(marginChartRef.current, {
+        marginChartInstance.current = new Chart(marginCanvas, {
           type: 'doughnut',
           data: {
             labels: ['Profit', 'Einkauf', 'Admin/Stress', 'Fixkosten'],
             datasets: [
               {
-                data: [profitPerc, procurement, efficiency, fix],
+                data: [0, 0, 0, FIX_COST_PERCENT],
                 backgroundColor: [
                   'rgba(15, 93, 100, 0.85)',
                   'rgba(239, 68, 68, 0.75)',
@@ -178,14 +181,14 @@ function CustomerAccessPage() {
     }
 
     return () => {
-      if (drgChartRef.current) {
-        const existingCanvasChart = Chart.getChart(drgChartRef.current)
+      if (drgCanvas) {
+        const existingCanvasChart = Chart.getChart(drgCanvas)
         if (existingCanvasChart) {
           existingCanvasChart.destroy()
         }
       }
-      if (marginChartRef.current) {
-        const existingCanvasChart = Chart.getChart(marginChartRef.current)
+      if (marginCanvas) {
+        const existingCanvasChart = Chart.getChart(marginCanvas)
         if (existingCanvasChart) {
           existingCanvasChart.destroy()
         }
@@ -207,7 +210,12 @@ function CustomerAccessPage() {
       return
     }
 
-    marginChartInstance.current.data.datasets[0].data = [profitPerc, procurement, efficiency, fix]
+    marginChartInstance.current.data.datasets[0].data = [
+      profitPerc,
+      procurement,
+      efficiency,
+      FIX_COST_PERCENT,
+    ]
     marginChartInstance.current.update()
   }, [efficiency, procurement, profitPerc])
 

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import type { HybridDrgProcedure } from '../data/hybridDrgProcedures'
 
 type HybridDrgCalculatorProps = {
@@ -27,20 +27,16 @@ function HybridDrgCalculator({
   const [opsPerWeek, setOpsPerWeek] = useState(defaultOpsPerWeek)
   const [weeksPerYear, setWeeksPerYear] = useState(defaultWeeksPerYear)
 
-  useEffect(() => {
-    if (!procedures.length) return
-    const firstKey = `${procedures[0].year}-${procedures[0].id}`
-    if (!procedures.find((procedure) => `${procedure.year}-${procedure.id}` === selectedKey)) {
-      setSelectedKey(firstKey)
-    }
-  }, [procedures, selectedKey])
-
   const selectedProcedure = useMemo(
     () =>
       procedures.find((procedure) => `${procedure.year}-${procedure.id}` === selectedKey) ??
-      procedures[0],
+      procedures[0] ??
+      null,
     [procedures, selectedKey]
   )
+  const selectedProcedureKey = selectedProcedure
+    ? `${selectedProcedure.year}-${selectedProcedure.id}`
+    : ''
 
   if (!procedures.length || !selectedProcedure) {
     return (
@@ -64,7 +60,10 @@ function HybridDrgCalculator({
       <div className="hybrid-calc-grid">
         <label className="field hybrid-calc-select">
           <span>Eingriff auswählen</span>
-          <select value={selectedKey} onChange={(event) => setSelectedKey(event.target.value)}>
+          <select
+            value={selectedProcedureKey}
+            onChange={(event) => setSelectedKey(event.target.value)}
+          >
             {procedures.map((procedure) => (
               <option
                 key={`${procedure.year}-${procedure.id}`}
