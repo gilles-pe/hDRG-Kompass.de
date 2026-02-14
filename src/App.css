@@ -885,25 +885,6 @@
   }
 }
 
-.photo-room {
-  background-image: linear-gradient(135deg, rgba(15, 93, 100, 0.22), rgba(42, 169, 160, 0.12)),
-    url('Computer.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.photo-mfa {
-  background-image: linear-gradient(135deg, rgba(15, 93, 100, 0.22), rgba(42, 169, 160, 0.12)),
-    url('Stock.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.photo-doctor {
-  background-size: cover;
-  background-position: center;
-}
-
 .hero-kpis {
   display: grid;
   gap: 0.8rem;

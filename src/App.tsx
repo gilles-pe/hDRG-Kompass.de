@@ -1,31 +1,50 @@
+import { lazy, Suspense } from 'react'
+import type { ReactNode } from 'react'
 import { createHashRouter, RouterProvider } from 'react-router-dom'
 import Layout from './layout/Layout'
-import HomePage from './pages/HomePage'
-import HybridDrgPage from './pages/HybridDrgPage'
-import PraxisPage from './pages/PraxisPage'
-import FachbereichePage from './pages/FachbereichePage'
-import KontaktPage from './pages/KontaktPage'
-import PartnerAccessPage from './pages/PartnerAccessPage'
-import CustomerAccessPage from './pages/CustomerAccessPage'
-import ImpressumPage from './pages/ImpressumPage'
-import DatenschutzPage from './pages/DatenschutzPage'
 import './App.css'
+
+const HomePage = lazy(() => import('./pages/HomePage'))
+const HybridDrgPage = lazy(() => import('./pages/HybridDrgPage'))
+const PraxisPage = lazy(() => import('./pages/PraxisPage'))
+const FachbereichePage = lazy(() => import('./pages/FachbereichePage'))
+const KontaktPage = lazy(() => import('./pages/KontaktPage'))
+const PartnerAccessPage = lazy(() => import('./pages/PartnerAccessPage'))
+const CustomerAccessPage = lazy(() => import('./pages/CustomerAccessPage'))
+const ImpressumPage = lazy(() => import('./pages/ImpressumPage'))
+const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage'))
+
+function RouteFallback() {
+  return (
+    <div className="page">
+      <section className="section">
+        <div className="container narrow">
+          <p>Inhalte werden geladen ...</p>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+function withSuspense(node: ReactNode) {
+  return <Suspense fallback={<RouteFallback />}>{node}</Suspense>
+}
 
 const router = createHashRouter([
   {
     path: '/',
     element: <Layout />,
     children: [
-      { index: true, element: <HomePage /> },
-      { path: 'hybrid-drg', element: <HybridDrgPage /> },
-      { path: 'praxis', element: <PraxisPage /> },
-      { path: 'fachbereiche', element: <FachbereichePage /> },
-      { path: 'kontakt', element: <KontaktPage /> },
-      { path: 'partner-access', element: <PartnerAccessPage /> },
-      { path: 'customer-access', element: <CustomerAccessPage /> },
-      { path: 'impressum', element: <ImpressumPage /> },
-      { path: 'datenschutz', element: <DatenschutzPage /> },
-      { path: '*', element: <HomePage /> },
+      { index: true, element: withSuspense(<HomePage />) },
+      { path: 'hybrid-drg', element: withSuspense(<HybridDrgPage />) },
+      { path: 'praxis', element: withSuspense(<PraxisPage />) },
+      { path: 'fachbereiche', element: withSuspense(<FachbereichePage />) },
+      { path: 'kontakt', element: withSuspense(<KontaktPage />) },
+      { path: 'partner-access', element: withSuspense(<PartnerAccessPage />) },
+      { path: 'customer-access', element: withSuspense(<CustomerAccessPage />) },
+      { path: 'impressum', element: withSuspense(<ImpressumPage />) },
+      { path: 'datenschutz', element: withSuspense(<DatenschutzPage />) },
+      { path: '*', element: withSuspense(<HomePage />) },
     ],
   },
 ])
