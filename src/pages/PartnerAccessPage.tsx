@@ -13,6 +13,7 @@ import {
   Tooltip,
 } from 'chart.js'
 import type { Plugin } from 'chart.js'
+import { Link } from 'react-router-dom'
 
 Chart.register(
   BarController,
@@ -619,9 +620,9 @@ function PartnerAccessPage() {
               Der Markt verschiebt sich jetzt. Positionieren Sie sich frühzeitig und gestalten Sie den
               ambulanten Markt aktiv mit.
             </p>
-            <a className="button primary" href="mailto:info@hdrg-kompass.de">
+            <Link className="button primary" to="/kontakt?focus=form&source=partner-cta">
               Gespräch anfragen
-            </a>
+            </Link>
           </div>
         </div>
       </section>

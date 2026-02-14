@@ -10,6 +10,7 @@ import {
   LinearScale,
   Tooltip,
 } from 'chart.js'
+import { Link } from 'react-router-dom'
 
 Chart.register(
   ArcElement,
@@ -253,9 +254,9 @@ function CustomerAccessPage() {
             <a className="button primary" href="#oekonomie">
               Profit-Rechner ansehen
             </a>
-            <a className="button secondary" href="mailto:info@hdrg-kompass.de">
+            <Link className="button secondary" to="/kontakt?focus=form&source=customer-hero">
               Praxisgespräch buchen
-            </a>
+            </Link>
           </div>
           <div className="customer-access-hero-stats">
             <div className="customer-access-hero-stat">
@@ -457,9 +458,9 @@ function CustomerAccessPage() {
               Bereichs profitabel übernehmen kann. Mit einem System, das den Einstieg spürbar
               erleichtert und Ihr Team sofort entlastet.
             </p>
-            <a className="button primary" href="mailto:info@hdrg-kompass.de">
+            <Link className="button primary" to="/kontakt?focus=form&source=customer-cta">
               Gespräch anfragen
-            </a>
+            </Link>
           </div>
 
           <div className="customer-spacer" />

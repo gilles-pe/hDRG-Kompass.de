@@ -9,9 +9,9 @@ function Footer() {
           <p className="footer-note">Neutrale Informationsplattform zu Hybrid-DRG für Praxen.</p>
           <div className="footer-cta">
             <p className="footer-cta-title">Es kann so einfach sein</p>
-            <a className="button primary" href="mailto:info@hdrg-kompass.de">
+            <Link className="button primary" to="/kontakt?focus=form&source=footer">
               Gespräch anfragen
-            </a>
+            </Link>
           </div>
         </div>
         <div className="footer-links">
