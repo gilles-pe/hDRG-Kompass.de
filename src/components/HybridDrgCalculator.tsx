@@ -19,7 +19,7 @@ function formatCurrency(value: number) {
 function HybridDrgCalculator({
   procedures,
   defaultOpsPerWeek = 8,
-  defaultWeeksPerYear = 46,
+  defaultWeeksPerYear = 40,
 }: HybridDrgCalculatorProps) {
   const [selectedKey, setSelectedKey] = useState(
     procedures[0] ? `${procedures[0].year}-${procedures[0].id}` : ''
@@ -90,7 +90,7 @@ function HybridDrgCalculator({
           />
           <span className="slider-hint">
             <span>1</span>
-            <span>{opsPerWeek}</span>
+            <span>20</span>
             <span>40</span>
           </span>
         </label>
@@ -101,14 +101,14 @@ function HybridDrgCalculator({
           </span>
           <input
             type="range"
-            min={20}
+            min={1}
             max={52}
             value={weeksPerYear}
             onChange={(event) => setWeeksPerYear(Number(event.target.value))}
           />
           <span className="slider-hint">
-            <span>20</span>
-            <span>{weeksPerYear}</span>
+            <span>1</span>
+            <span>26</span>
             <span>52</span>
           </span>
         </label>

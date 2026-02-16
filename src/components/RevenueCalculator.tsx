@@ -6,7 +6,7 @@ function formatNumber(value: number) {
 
 function RevenueCalculator() {
   const [opsPerWeek, setOpsPerWeek] = useState('')
-  const [weeksPerYear, setWeeksPerYear] = useState('')
+  const [weeksPerYear, setWeeksPerYear] = useState('40')
   const [feePerCase, setFeePerCase] = useState('')
 
   const result = useMemo(() => {
@@ -40,7 +40,7 @@ function RevenueCalculator() {
           <span>Wochen pro Jahr</span>
           <input
             inputMode="numeric"
-            min="0"
+            min="1"
             type="number"
             value={weeksPerYear}
             onChange={(event) => setWeeksPerYear(event.target.value)}

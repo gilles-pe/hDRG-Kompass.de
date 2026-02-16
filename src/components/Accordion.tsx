@@ -11,17 +11,31 @@ type AccordionProps = {
   items: AccordionItem[]
 }
 
+function getHashTarget() {
+  if (typeof window === 'undefined') return ''
+
+  const hashParts = window.location.hash.split('#').filter(Boolean)
+  if (!hashParts.length) return ''
+
+  const candidate = decodeURIComponent(hashParts[hashParts.length - 1] ?? '')
+  if (!candidate || candidate.startsWith('/')) return ''
+
+  return candidate
+}
+
 function Accordion({ items }: AccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   useEffect(() => {
     const openFromHash = () => {
-      if (typeof window === 'undefined') return
-      const hash = window.location.hash.replace('#', '')
+      const hash = getHashTarget()
       if (!hash) return
       const index = items.findIndex((item) => item.id === hash)
       if (index >= 0) {
         setOpenIndex(index)
+        requestAnimationFrame(() => {
+          document.getElementById(hash)?.scrollIntoView({ behavior: 'auto', block: 'start' })
+        })
       }
     }
 
