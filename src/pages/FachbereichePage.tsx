@@ -87,7 +87,11 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
         </div>
-        <HybridDrgCalculator procedures={proceduresBySection.kardiologie} />
+        <HybridDrgCalculator
+          procedures={proceduresBySection.kardiologie}
+          calculatorId="kardiologie"
+          calculatorLabel="Kardiologie (PCI & Schrittmacher)"
+        />
       </div>
     ),
   },
@@ -123,7 +127,11 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
         </div>
-        <HybridDrgCalculator procedures={proceduresBySection.orthopaedie} />
+        <HybridDrgCalculator
+          procedures={proceduresBySection.orthopaedie}
+          calculatorId="orthopaedie"
+          calculatorLabel="Orthopädie & Sportmedizin (Knie, Schulter, Hand & Fuß)"
+        />
       </div>
     ),
   },
@@ -156,7 +164,11 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
         </div>
-        <HybridDrgCalculator procedures={proceduresBySection.viszeralchirurgie} />
+        <HybridDrgCalculator
+          procedures={proceduresBySection.viszeralchirurgie}
+          calculatorId="viszeralchirurgie"
+          calculatorLabel="Viszeralchirurgie (Hernien & Galle)"
+        />
       </div>
     ),
   },
@@ -189,7 +201,11 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
         </div>
-        <HybridDrgCalculator procedures={proceduresBySection.urologie} />
+        <HybridDrgCalculator
+          procedures={proceduresBySection.urologie}
+          calculatorId="urologie"
+          calculatorLabel="Urologie (TUR-P & Harnstein)"
+        />
       </div>
     ),
   },
@@ -222,7 +238,11 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
         </div>
-        <HybridDrgCalculator procedures={proceduresBySection.gefaesschirurgie} />
+        <HybridDrgCalculator
+          procedures={proceduresBySection.gefaesschirurgie}
+          calculatorId="gefaesschirurgie"
+          calculatorLabel="Gefäßchirurgie (Varizen)"
+        />
       </div>
     ),
   },
@@ -255,7 +275,11 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
         </div>
-        <HybridDrgCalculator procedures={proceduresBySection.gynaekologie} />
+        <HybridDrgCalculator
+          procedures={proceduresBySection.gynaekologie}
+          calculatorId="gynaekologie"
+          calculatorLabel="Gynäkologie (LASH & Mamma)"
+        />
       </div>
     ),
   },
@@ -288,7 +312,11 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
         </div>
-        <HybridDrgCalculator procedures={proceduresBySection.hno} />
+        <HybridDrgCalculator
+          procedures={proceduresBySection.hno}
+          calculatorId="hno"
+          calculatorLabel="HNO (Septum/NNH & Radiofrequenz)"
+        />
       </div>
     ),
   },
@@ -321,7 +349,11 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
         </div>
-        <HybridDrgCalculator procedures={proceduresBySection.proktologie} />
+        <HybridDrgCalculator
+          procedures={proceduresBySection.proktologie}
+          calculatorId="proktologie"
+          calculatorLabel="Proktologie (Fisteln & Rekonstruktion)"
+        />
       </div>
     ),
   },
@@ -354,7 +386,11 @@ const specialties: AccordionItem[] = [
             </ul>
           </div>
         </div>
-        <HybridDrgCalculator procedures={proceduresBySection.gastroenterologie} />
+        <HybridDrgCalculator
+          procedures={proceduresBySection.gastroenterologie}
+          calculatorId="gastroenterologie"
+          calculatorLabel="Gastroenterologie (ERCP & Koloskopie)"
+        />
       </div>
     ),
   },
@@ -371,7 +407,11 @@ if (proceduresBySection.weitere.length) {
           Weitere Hybrid-DRG-Codes aus dem Katalog 2025/2026, die nicht eindeutig einem der
           Hauptfachbereiche zugeordnet werden konnten.
         </p>
-        <HybridDrgCalculator procedures={proceduresBySection.weitere} />
+        <HybridDrgCalculator
+          procedures={proceduresBySection.weitere}
+          calculatorId="weitere"
+          calculatorLabel="Weitere Fachbereiche"
+        />
       </div>
     ),
   })

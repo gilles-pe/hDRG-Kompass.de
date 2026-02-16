@@ -1,26 +1,48 @@
-import { useMemo, useState } from 'react'
+import { useId, useMemo, useState } from 'react'
+import CalculatorShareActions from './CalculatorShareActions'
 import type { HybridDrgProcedure } from '../data/hybridDrgProcedures'
+import { buildPageLevelUrl } from '../utils/calculatorShare'
 
 type HybridDrgCalculatorProps = {
   procedures: HybridDrgProcedure[]
   defaultOpsPerWeek?: number
   defaultWeeksPerYear?: number
+  calculatorId?: string
+  calculatorLabel?: string
 }
 
 const currencyFormatter = new Intl.NumberFormat('de-DE', {
   style: 'currency',
   currency: 'EUR',
 })
+const dateTimeFormatter = new Intl.DateTimeFormat('de-DE', {
+  dateStyle: 'medium',
+  timeStyle: 'short',
+})
+const FORMULA_TEXT = 'OPs/Woche × Wochen/Jahr × Basis-Erlös pro Fall'
+const BASE_DISCLAIMER_TEXT =
+  'Basis-Erlös (Stand 2026) als Orientierungswert. Der tatsächlich erzielbare Erlös variiert in Abhängigkeit von Schweregrad (CC), Patientenalter, Begleiterkrankungen sowie möglicher Hybrid-DRG-Zuordnung und Abrechnungsbesonderheiten. Abweichungen und Abrechnungsfehler sind möglich.'
 
 function formatCurrency(value: number) {
   return currencyFormatter.format(value)
+}
+
+function sanitizeIdentifier(value: string) {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]+/g, '-')
+    .replace(/^-+|-+$/g, '')
 }
 
 function HybridDrgCalculator({
   procedures,
   defaultOpsPerWeek = 8,
   defaultWeeksPerYear = 40,
+  calculatorId,
+  calculatorLabel,
 }: HybridDrgCalculatorProps) {
+  const reactId = useId()
   const [selectedKey, setSelectedKey] = useState(
     procedures[0] ? `${procedures[0].year}-${procedures[0].id}` : ''
   )
@@ -53,10 +75,55 @@ function HybridDrgCalculator({
   const totalRevenue = selectedProcedure.base_price * annualCases
   const restrictions = selectedProcedure.restrictions?.trim() || 'laut Katalog prüfen'
   const description = selectedProcedure.description?.trim()
+  const sanitizedCalculatorId = sanitizeIdentifier(calculatorId || reactId) || 'hybrid-calc'
+  const printTargetId = `hybrid-calc-${sanitizedCalculatorId}`
+  const calculatorName = calculatorLabel?.trim() || 'Hybrid-DRG-Rechner 2025/2026'
+  const pageLevelUrl = buildPageLevelUrl() || 'nicht verfügbar'
 
   return (
-    <div className="hybrid-calc">
-      <h4 className="hybrid-calc-title">Hybrid-DRG-Rechner 2025/2026</h4>
+    <div className="hybrid-calc" id={printTargetId}>
+      <div className="hybrid-calc-head">
+        <h4 className="hybrid-calc-title">Hybrid-DRG-Rechner 2025/2026</h4>
+        <CalculatorShareActions
+          printTargetId={printTargetId}
+          buildMailPayload={() => {
+            const subject = `hDRG-Kompass.de | Berechnung teilen | ${calculatorName}`
+            const bodyLines = [
+              'Guten Tag,',
+              '',
+              'anbei die aktuelle Berechnung aus dem hDRG-Kompass zur gemeinsamen Abstimmung.',
+              '',
+              'RECHNER',
+              `- ${calculatorName}`,
+              `- Zeitpunkt: ${dateTimeFormatter.format(new Date())}`,
+              '',
+              'EINGRIFF',
+              `- ${selectedProcedure.year} · ${selectedProcedure.id} – ${selectedProcedure.title}`,
+              `- Beschreibung: ${description || 'keine Zusatzbeschreibung'}`,
+              `- Voraussetzungen: ${restrictions}`,
+              '',
+              'BERECHNUNG',
+              `- OPs pro Woche: ${opsPerWeek}`,
+              `- Wochen pro Jahr: ${weeksPerYear}`,
+              `- Fälle pro Jahr: ${annualCases}`,
+              `- Basis-Erlös pro Fall: ${formatCurrency(selectedProcedure.base_price)}`,
+              `- Gesamtbetrag pro Jahr: ${formatCurrency(totalRevenue)}`,
+              `- Formel: ${FORMULA_TEXT}`,
+              '',
+              'QUELLE',
+              '- Website: hDRG-Kompass.de',
+              `- Rechner-Link: ${pageLevelUrl}`,
+              '',
+              'HINWEIS',
+              `- ${BASE_DISCLAIMER_TEXT}`,
+              '',
+              'Viele Grüße',
+            ]
+
+            return { subject, body: bodyLines.join('\n') }
+          }}
+        />
+      </div>
       <div className="hybrid-calc-grid">
         <label className="field hybrid-calc-select">
           <span>Eingriff auswählen</span>
@@ -145,14 +212,11 @@ function HybridDrgCalculator({
         </div>
 
         <div className="result-formula">
-          Formel: OPs/Woche × Wochen/Jahr × Basis-Erlös pro Fall
+          Formel: {FORMULA_TEXT}
         </div>
 
         <div className="card-footer-disclaimer">
-          Basis-Erlös (Stand 2026) als Orientierungswert. Der tatsächlich erzielbare Erlös variiert
-          in Abhängigkeit von Schweregrad (CC), Patientenalter, Begleiterkrankungen sowie möglicher
-          Hybrid-DRG-Zuordnung und Abrechnungsbesonderheiten. Abweichungen und Abrechnungsfehler sind
-          möglich.
+          {BASE_DISCLAIMER_TEXT}
         </div>
       </div>
     </div>
