@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <!-- Outer circle -->
+  <circle cx="200" cy="200" r="180" fill="none" stroke="#4a4a4a" stroke-width="8"/>
+  
+  <!-- Inner compass ring -->
+  <circle cx="200" cy="200" r="140" fill="none" stroke="#4a4a4a" stroke-width="20"/>
+  
+  <!-- North arrow (top) -->
+  <path d="M 200 60 L 185 100 L 200 90 L 215 100 Z" fill="#4a4a4a"/>
+  
+  <!-- East arrow (right) -->
+  <path d="M 340 200 L 300 185 L 310 200 L 300 215 Z" fill="#4a4a4a"/>
+  
+  <!-- South arrow (bottom) -->
+  <path d="M 200 340 L 215 300 L 200 310 L 185 300 Z" fill="#4a4a4a"/>
+  
+  <!-- West arrow (left) -->
+  <path d="M 60 200 L 100 215 L 90 200 L 100 185 Z" fill="#4a4a4a"/>
+  
+  <!-- Text hDRG -->
+  <text x="200" y="200" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#4a4a4a" text-anchor="middle" dominant-baseline="middle">hDRG</text>
+  
+  <!-- Text Kompass -->
+  <text x="200" y="245" font-family="Arial, sans-serif" font-size="36" fill="#4a4a4a" text-anchor="middle" dominant-baseline="middle">Kompass</text>
+</svg>
