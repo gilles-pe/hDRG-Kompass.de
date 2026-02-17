@@ -126,17 +126,28 @@
     <script>
       (function () {
         var key = 'hdrg_announce_banner_dismissed';
+        var dismissDurationMs = 5 * 24 * 60 * 60 * 1000;
         var banner = document.querySelector('[data-announce-banner]');
         if (!banner) return;
-        if (window.localStorage.getItem(key) === '1') {
-          banner.style.display = 'none';
-          return;
+        var dismissedValue = window.localStorage.getItem(key);
+        if (dismissedValue) {
+          var dismissedAt = Number(dismissedValue);
+          if (Number.isFinite(dismissedAt)) {
+            if (Date.now() - dismissedAt < dismissDurationMs) {
+              banner.style.display = 'none';
+              return;
+            }
+            window.localStorage.removeItem(key);
+          } else if (dismissedValue === '1') {
+            // Legacy value from older behavior: allow banner to show again.
+            window.localStorage.removeItem(key);
+          }
         }
         var closeBtn = banner.querySelector('.announce-banner__close');
         if (closeBtn) {
           closeBtn.addEventListener('click', function () {
             banner.style.display = 'none';
-            window.localStorage.setItem(key, '1');
+            window.localStorage.setItem(key, String(Date.now()));
           });
         }
       })();
