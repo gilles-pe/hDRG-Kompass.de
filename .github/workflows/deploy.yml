@@ -34,6 +34,27 @@ jobs:
       - name: Create CNAME file for custom domain
         run: |
           echo "www.hdrg-kompass.de" > ${{ github.workspace }}/dist/CNAME
+      - name: Create trust files
+        run: |
+          mkdir -p dist/.well-known
+          echo "Contact: mailto:info@hdrg-kompass.de" > dist/.well-known/security.txt
+          echo "Canonical: https://www.hdrg-kompass.de" >> dist/.well-known/security.txt
+          echo "Expires: 2027-01-01T00:00:00.000Z" >> dist/.well-known/security.txt
+          echo "Preferred-Languages: de, en" >> dist/.well-known/security.txt
+          echo "User-agent: *" > dist/robots.txt
+          echo "Allow: /" >> dist/robots.txt
+          echo "" >> dist/robots.txt
+          echo "Sitemap: https://www.hdrg-kompass.de/sitemap.xml" >> dist/robots.txt
+          cat > dist/sitemap.xml << 'EOF'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+            <url>
+              <loc>https://www.hdrg-kompass.de/</loc>
+              <priority>1.0</priority>
+            </url>
+          </urlset>
+          EOF
+          touch dist/favicon.ico
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
