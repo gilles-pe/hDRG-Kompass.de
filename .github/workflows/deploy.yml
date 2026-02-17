@@ -54,6 +54,32 @@ jobs:
             </url>
           </urlset>
           EOF
+          cat > dist/humans.txt << 'EOF'
+          Site: Hybrid-DRG Kompass
+          Location: Germany
+          Contact: info@hdrg-kompass.de
+          Technology: GitHub Pages
+          EOF
+          cat > dist/browserconfig.xml << 'EOF'
+          <?xml version="1.0" encoding="utf-8"?>
+          <browserconfig>
+            <msapplication>
+              <tile>
+                <TileColor>#ffffff</TileColor>
+              </tile>
+            </msapplication>
+          </browserconfig>
+          EOF
+          cat > dist/site.webmanifest << 'EOF'
+          {
+            "name": "Hybrid-DRG Kompass",
+            "short_name": "HDRG Kompass",
+            "start_url": "/",
+            "display": "standalone",
+            "background_color": "#ffffff",
+            "theme_color": "#ffffff"
+          }
+          EOF
           touch dist/favicon.ico
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
