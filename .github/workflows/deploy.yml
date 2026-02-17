@@ -80,6 +80,12 @@ jobs:
             "theme_color": "#ffffff"
           }
           EOF
+          customer_chunk="$(basename "$(ls dist/assets/CustomerAccessPage*.js | head -n 1)")"
+          cat > "dist/assets/CustomerAccessPage-DZRWbTzf.js" << EOF
+          export * from './${customer_chunk}';
+          import mod from './${customer_chunk}';
+          export default mod;
+          EOF
           touch dist/favicon.ico
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
