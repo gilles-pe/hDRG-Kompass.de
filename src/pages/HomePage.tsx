@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { getBaseUrl } from '../utils/baseUrl'
 
 const fachbereiche = [
   { id: 'kardiologie', title: 'Kardiologie', subtitle: 'PCI & Schrittmacher' },
@@ -13,8 +14,9 @@ const fachbereiche = [
 ]
 
 function HomePage() {
-  const logoUrl = `${import.meta.env.BASE_URL}hdrg_kompass.svg`
-  const heroImageUrl = `${import.meta.env.BASE_URL}Ambulantes%20OP%20Zentrum%20Hero%20Pic.jpg`
+  const baseUrl = getBaseUrl()
+  const logoUrl = `${baseUrl}hdrg_kompass.svg`
+  const heroImageUrl = `${baseUrl}Ambulantes%20OP%20Zentrum%20Hero%20Pic.jpg`
   return (
     <div className="page home-page">
       <section className="hero">

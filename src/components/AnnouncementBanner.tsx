@@ -4,6 +4,10 @@ const DISMISS_KEY = 'hdrg_announce_banner_dismissed'
 const DISMISS_DURATION_MS = 5 * 24 * 60 * 60 * 1000
 
 function AnnouncementBanner() {
+  if (typeof window === 'undefined') {
+    return null
+  }
+
   const [isVisible, setIsVisible] = useState(true)
 
   useEffect(() => {

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
+import { getBaseUrl } from '../utils/baseUrl'
 
 type NavItem = {
   to: string
@@ -17,7 +18,7 @@ const NAV_ITEMS: NavItem[] = [
 function Header() {
   const [openedOnLocationKey, setOpenedOnLocationKey] = useState<string | null>(null)
   const location = useLocation()
-  const logoUrl = `${import.meta.env.BASE_URL}hdrg_kompass.svg`
+  const logoUrl = `${getBaseUrl()}hdrg_kompass.svg`
   const isMenuOpen = openedOnLocationKey === location.key
 
   const closeMenu = () => {

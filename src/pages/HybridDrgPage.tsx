@@ -1,5 +1,7 @@
+import { getBaseUrl } from '../utils/baseUrl'
+
 function HybridDrgPage() {
-  const baseUrl = import.meta.env.BASE_URL
+  const baseUrl = getBaseUrl()
   const principleImage = `${baseUrl}hDRGPrinzip.jpg`
 
   return (
