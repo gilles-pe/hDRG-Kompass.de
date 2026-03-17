@@ -4,6 +4,7 @@ const DISMISS_KEY = 'hdrg_announce_banner_dismissed'
 const DISMISS_DURATION_MS = 5 * 24 * 60 * 60 * 1000
 
 function shouldShowBanner(): boolean {
+  if (typeof window === 'undefined') return true
   const dismissedValue = window.localStorage.getItem(DISMISS_KEY)
   if (!dismissedValue) return true
 
