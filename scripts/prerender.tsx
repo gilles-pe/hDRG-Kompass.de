@@ -17,6 +17,7 @@ const INDEX_PATH = path.join(DIST_DIR, 'index.html')
 
 const PRE_RENDER_PATHS = ['/', '/hybrid-drg', '/praxis', '/kontakt', '/impressum', '/datenschutz']
 
+// eslint-disable-next-line react-refresh/only-export-components
 function AppForRoute() {
   return (
     <Routes>

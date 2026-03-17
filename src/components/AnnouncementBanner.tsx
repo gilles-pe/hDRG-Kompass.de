@@ -1,29 +1,25 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 const DISMISS_KEY = 'hdrg_announce_banner_dismissed'
 const DISMISS_DURATION_MS = 5 * 24 * 60 * 60 * 1000
 
+function shouldShowBanner(): boolean {
+  const dismissedValue = window.localStorage.getItem(DISMISS_KEY)
+  if (!dismissedValue) return true
+
+  const dismissedAt = Number(dismissedValue)
+  if (Number.isFinite(dismissedAt)) {
+    if (Date.now() - dismissedAt < DISMISS_DURATION_MS) return false
+    window.localStorage.removeItem(DISMISS_KEY)
+  } else if (dismissedValue === '1') {
+    // Legacy value from older behavior: allow banner to show again.
+    window.localStorage.removeItem(DISMISS_KEY)
+  }
+  return true
+}
+
 function AnnouncementBanner() {
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    const dismissedValue = window.localStorage.getItem(DISMISS_KEY)
-
-    if (dismissedValue) {
-      const dismissedAt = Number(dismissedValue)
-      if (Number.isFinite(dismissedAt)) {
-        if (Date.now() - dismissedAt < DISMISS_DURATION_MS) {
-          return
-        }
-        window.localStorage.removeItem(DISMISS_KEY)
-      } else if (dismissedValue === '1') {
-        // Legacy value from older behavior: allow banner to show again.
-        window.localStorage.removeItem(DISMISS_KEY)
-      }
-    }
-
-    setIsVisible(true)
-  }, [])
+  const [isVisible, setIsVisible] = useState(() => shouldShowBanner())
 
   if (!isVisible) return null
 
