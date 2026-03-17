@@ -2,6 +2,7 @@ import { useId, useMemo, useState } from 'react'
 import CalculatorShareActions from './CalculatorShareActions'
 import type { HybridDrgProcedure } from '../data/hybridDrgProcedures'
 import { buildPageLevelUrl } from '../utils/calculatorShare'
+import { dateTimeFormatter, formatCurrency } from '../utils/formatters'
 
 type HybridDrgCalculatorProps = {
   procedures: HybridDrgProcedure[]
@@ -11,21 +12,9 @@ type HybridDrgCalculatorProps = {
   calculatorLabel?: string
 }
 
-const currencyFormatter = new Intl.NumberFormat('de-DE', {
-  style: 'currency',
-  currency: 'EUR',
-})
-const dateTimeFormatter = new Intl.DateTimeFormat('de-DE', {
-  dateStyle: 'medium',
-  timeStyle: 'short',
-})
 const FORMULA_TEXT = 'OPs/Woche × Wochen/Jahr × Basis-Erlös pro Fall'
 const BASE_DISCLAIMER_TEXT =
   'Basis-Erlös (Stand 2026) als Orientierungswert. Der tatsächlich erzielbare Erlös variiert in Abhängigkeit von Schweregrad (CC), Patientenalter, Begleiterkrankungen sowie möglicher Hybrid-DRG-Zuordnung und Abrechnungsbesonderheiten. Abweichungen und Abrechnungsfehler sind möglich.'
-
-function formatCurrency(value: number) {
-  return currencyFormatter.format(value)
-}
 
 function sanitizeIdentifier(value: string) {
   return value

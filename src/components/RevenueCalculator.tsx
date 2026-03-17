@@ -1,19 +1,11 @@
 import { useId, useMemo, useState } from 'react'
 import CalculatorShareActions from './CalculatorShareActions'
 import { buildPageLevelUrl } from '../utils/calculatorShare'
+import { currencyFormatter, dateTimeFormatter } from '../utils/formatters'
 
 function formatNumber(value: number) {
   return new Intl.NumberFormat('de-DE').format(Math.round(value))
 }
-
-const currencyFormatter = new Intl.NumberFormat('de-DE', {
-  style: 'currency',
-  currency: 'EUR',
-})
-const dateTimeFormatter = new Intl.DateTimeFormat('de-DE', {
-  dateStyle: 'medium',
-  timeStyle: 'short',
-})
 const FORMULA_TEXT = 'OPs/Woche × Wochen/Jahr × Pauschale je Fall'
 
 function RevenueCalculator() {
