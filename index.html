@@ -53,9 +53,11 @@
     <script>
       (function () {
         if (window.location.search.startsWith('?/')) {
-          var path = window.location.search.slice(2);
-          var newUrl = window.location.pathname + path.replace(/~and~/g, '&') + window.location.hash;
-          window.history.replaceState(null, '', newUrl);
+          var q = window.location.search.slice(2);
+          var parts = q.split('&');
+          var pathname = parts[0].replace(/~and~/g, '&');
+          var search = parts.length > 1 ? '?' + parts.slice(1).join('&').replace(/~and~/g, '&') : '';
+          window.history.replaceState(null, '', '/' + pathname + search + window.location.hash);
         }
       })();
     </script>

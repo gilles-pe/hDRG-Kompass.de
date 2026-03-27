@@ -6,11 +6,10 @@
     <title>Redirecting…</title>
     <script>
       (function () {
-        var base = '/';
-        var path = window.location.pathname.replace(base, '');
-        var search = window.location.search.replace(/&/g, '~and~');
-        var redirect = base + '?/' + path + search + window.location.hash;
-        window.location.replace(redirect);
+        var l = window.location;
+        var path = l.pathname.slice(1).replace(/&/g, '~and~');
+        var search = l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '';
+        l.replace(l.protocol + '//' + l.host + '/?/' + path + search + l.hash);
       })();
     </script>
   </head>
