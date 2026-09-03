@@ -1183,6 +1183,74 @@
   gap: 0.5rem;
 }
 
+.legal-page h1 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin-bottom: 0.5rem;
+}
+
+.legal-page .legal-meta {
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+
+.legal-page .legal-toc {
+  margin: 2rem 0;
+  padding: 1.2rem 1.4rem;
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid rgba(220, 227, 232, 0.85);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.legal-page .legal-toc h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 0.7rem;
+}
+
+.legal-page .legal-toc ol {
+  list-style: decimal;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.35rem;
+  columns: 2;
+  column-gap: 2rem;
+  font-size: 0.9rem;
+}
+
+.legal-page .legal-toc a {
+  color: var(--primary);
+}
+
+.legal-page h2 {
+  font-size: 1.35rem;
+  color: var(--primary);
+  margin: 2.5rem 0 0.7rem;
+  scroll-margin-top: 1.5rem;
+}
+
+.legal-page h3 {
+  font-size: 1.05rem;
+  color: var(--secondary);
+  margin: 1.5rem 0 0.4rem;
+}
+
+.legal-page p {
+  margin-bottom: 0.85rem;
+}
+
+.legal-page ul {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 640px) {
+  .legal-page .legal-toc ol {
+    columns: 1;
+  }
+}
+
 .button {
   display: inline-flex;
   align-items: center;
