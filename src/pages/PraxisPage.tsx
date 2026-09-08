@@ -1,4 +1,5 @@
 import RevenueCalculator from '../components/RevenueCalculator'
+import { useScrollReveal } from '../hooks/useScrollReveal'
 
 const patientBenefits = [
   'Vertraute Versorgung und persönlicher Kontakt',
@@ -15,6 +16,7 @@ const requirements = [
 ]
 
 function PraxisPage() {
+  useScrollReveal()
   return (
     <div className="page">
       <section className="section">
@@ -24,8 +26,8 @@ function PraxisPage() {
       </section>
 
       <section className="section muted">
-        <div className="container grid-2">
-          <div>
+        <div className="container grid-2" data-reveal-group>
+          <div data-reveal>
             <h2>Patientenvorteile im ambulanten Setting</h2>
             <ul className="list">
               {patientBenefits.map((benefit) => (
@@ -33,7 +35,7 @@ function PraxisPage() {
               ))}
             </ul>
           </div>
-          <div>
+          <div data-reveal>
             <h2>Was Praxen benötigen</h2>
             <ul className="list">
               {requirements.map((item) => (

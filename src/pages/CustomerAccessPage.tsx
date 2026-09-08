@@ -74,7 +74,7 @@ function CustomerAccessPage() {
                 backgroundColor: [
                   'rgba(148, 163, 184, 0.8)',
                   'rgba(99, 102, 241, 0.25)',
-                  'rgba(15, 93, 100, 0.9)',
+                  'rgba(14, 42, 87, 0.9)',
                   'rgba(0, 0, 0, 0)',
                   'rgba(0, 0, 0, 0)',
                   'rgba(0, 0, 0, 0)',
@@ -86,8 +86,8 @@ function CustomerAccessPage() {
                 label: 'Trend bis 2028 (offen)',
                 data: [null, null, null, 520, 900, null],
                 clip: false,
-                backgroundColor: 'rgba(15, 93, 100, 0.08)',
-                borderColor: 'rgba(15, 93, 100, 0.45)',
+                backgroundColor: 'rgba(14, 42, 87, 0.08)',
+                borderColor: 'rgba(14, 42, 87, 0.45)',
                 borderWidth: 1.6,
                 borderSkipped: 'top',
                 borderRadius: 6,
@@ -96,8 +96,8 @@ function CustomerAccessPage() {
               {
                 label: 'Trend 2029 (abgeschnitten)',
                 data: [null, null, null, null, null, 1600],
-                backgroundColor: 'rgba(15, 93, 100, 0.05)',
-                borderColor: 'rgba(15, 93, 100, 0.28)',
+                backgroundColor: 'rgba(14, 42, 87, 0.05)',
+                borderColor: 'rgba(14, 42, 87, 0.28)',
                 borderWidth: 1.6,
                 borderSkipped: 'top',
                 borderRadius: 6,
@@ -160,9 +160,9 @@ function CustomerAccessPage() {
               {
                 data: [0, 0, 0, FIX_COST_PERCENT],
                 backgroundColor: [
-                  'rgba(15, 93, 100, 0.85)',
+                  'rgba(14, 42, 87, 0.85)',
                   'rgba(239, 68, 68, 0.75)',
-                  'rgba(245, 165, 36, 0.75)',
+                  'rgba(74, 143, 240, 0.75)',
                   'rgba(148, 163, 184, 0.7)',
                 ],
                 borderWidth: 0,
@@ -500,8 +500,8 @@ function CustomerAccessPage() {
                   maxWidth: '220px',
                   borderRadius: '16px',
                   overflow: 'hidden',
-                  border: '1px solid rgba(15, 93, 100, 0.22)',
-                  boxShadow: '0 16px 30px rgba(8, 36, 41, 0.14)',
+                  border: '1px solid rgba(14, 42, 87, 0.22)',
+                  boxShadow: '0 16px 30px rgba(5, 14, 30, 0.14)',
                   cursor: 'pointer',
                 }}
                 aria-label="DocEase Teaser vergrößern"
@@ -536,7 +536,7 @@ function CustomerAccessPage() {
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'rgba(8, 36, 41, 0.8)',
+            background: 'rgba(5, 14, 30, 0.8)',
             display: 'grid',
             placeItems: 'center',
             padding: '2rem',
@@ -559,7 +559,7 @@ function CustomerAccessPage() {
               height: '32px',
               borderRadius: '999px',
               border: '1px solid rgba(255, 255, 255, 0.35)',
-              background: 'rgba(8, 36, 41, 0.65)',
+              background: 'rgba(5, 14, 30, 0.65)',
               color: '#fff',
               fontSize: '18px',
               fontWeight: 700,
