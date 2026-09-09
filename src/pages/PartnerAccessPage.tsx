@@ -87,7 +87,7 @@ function PartnerAccessPage() {
         const { ctx } = chart
         const { left, right, top, bottom } = chart.chartArea
         ctx.save()
-        ctx.strokeStyle = 'rgba(15, 93, 100, 0.28)'
+        ctx.strokeStyle = 'rgba(14, 42, 87, 0.28)'
         ctx.lineWidth = 1.25
         ctx.setLineDash([4, 6])
 
@@ -95,7 +95,7 @@ function PartnerAccessPage() {
         ctx.arc(topLeftX, topLeftY, topLeftRadius, 0, Math.PI * 2)
         ctx.stroke()
 
-        ctx.strokeStyle = 'rgba(245, 165, 36, 0.55)'
+        ctx.strokeStyle = 'rgba(74, 143, 240, 0.55)'
         ctx.beginPath()
         ctx.arc(bottomRightX, bottomRightY, bottomRightRadius, 0, Math.PI * 2)
         ctx.stroke()
@@ -113,7 +113,7 @@ function PartnerAccessPage() {
         const topLeftWidth = ctx.measureText(topLeftLabel).width
         ctx.fillStyle = 'rgba(255, 255, 255, 0.68)'
         ctx.fillRect(topLeftTextX - padX, topLeftTextY - 12, topLeftWidth + padX * 2, 18)
-        ctx.fillStyle = 'rgba(15, 93, 100, 0.85)'
+        ctx.fillStyle = 'rgba(14, 42, 87, 0.85)'
         ctx.fillText(topLeftLabel, topLeftTextX, topLeftTextY)
 
         const bottomRightWidth = ctx.measureText(bottomRightLabel).width
@@ -126,7 +126,7 @@ function PartnerAccessPage() {
           bottomRightWidth + padX * 2,
           18
         )
-        ctx.fillStyle = 'rgba(245, 165, 36, 0.95)'
+        ctx.fillStyle = 'rgba(74, 143, 240, 0.95)'
         ctx.fillText(bottomRightLabel, bottomRightTextX, bottomRightTextY)
 
         chart.data.datasets.forEach((dataset, datasetIndex) => {
@@ -135,7 +135,7 @@ function PartnerAccessPage() {
           const isClinicDataset = datasetIndex === 0
 
           ctx.font = "500 10px 'Poppins', sans-serif"
-          ctx.fillStyle = isClinicDataset ? 'rgba(15, 93, 100, 0.82)' : 'rgba(158, 100, 9, 0.8)'
+          ctx.fillStyle = isClinicDataset ? 'rgba(14, 42, 87, 0.82)' : 'rgba(90, 104, 128, 0.8)'
 
           meta.data.forEach((point, pointIndex) => {
             const pointLabel = dataPoints[pointIndex]?.label
@@ -162,7 +162,7 @@ function PartnerAccessPage() {
               {
                 label: 'Eingriffe (in Mio.)',
                 data: [2.1, 2.0],
-                backgroundColor: ['rgba(148, 163, 184, 0.8)', 'rgba(15, 93, 100, 0.9)'],
+                backgroundColor: ['rgba(148, 163, 184, 0.8)', 'rgba(14, 42, 87, 0.9)'],
                 borderRadius: 8,
                 barPercentage: 0.6,
               },
@@ -199,7 +199,7 @@ function PartnerAccessPage() {
                   { x: 14, y: 82, r: 24, label: 'Katholisches Krankenhaus' },
                   { x: 8, y: 96, r: 26, label: 'Staedtisches Krankenhaus' },
                 ],
-                backgroundColor: 'rgba(15, 93, 100, 0.75)',
+                backgroundColor: 'rgba(14, 42, 87, 0.75)',
               },
               {
                 label: 'Praxen',
@@ -214,7 +214,7 @@ function PartnerAccessPage() {
                   { x: 92, y: 12, r: 5, label: 'Tagesklinik Ost' },
                   { x: 62, y: 34, r: 6, label: 'Zentrum Nord' },
                 ],
-                backgroundColor: 'rgba(245, 165, 36, 0.65)',
+                backgroundColor: 'rgba(74, 143, 240, 0.65)',
               },
             ],
           },
@@ -262,13 +262,13 @@ function PartnerAccessPage() {
               {
                 label: 'Direktvertrieb',
                 data: [85, 90, 95, 70],
-                backgroundColor: 'rgba(15, 93, 100, 0.85)',
+                backgroundColor: 'rgba(14, 42, 87, 0.85)',
                 borderRadius: 6,
               },
               {
                 label: 'Sanoom Plattform Access',
                 data: [20, 15, 25, 10],
-                backgroundColor: 'rgba(245, 165, 36, 0.75)',
+                backgroundColor: 'rgba(74, 143, 240, 0.75)',
                 borderRadius: 6,
               },
             ],
@@ -305,7 +305,7 @@ function PartnerAccessPage() {
               {
                 label: 'Zusätzliche Kapazität durch Enablement',
                 data: [10, 30, 60, 90, 120],
-                backgroundColor: 'rgba(42, 169, 160, 0.85)',
+                backgroundColor: 'rgba(34, 184, 176, 0.85)',
               },
             ],
           },
@@ -338,7 +338,7 @@ function PartnerAccessPage() {
               {
                 label: 'Hybrid-DRG-Codes',
                 data: [12, 34, 103],
-                backgroundColor: ['rgba(148, 163, 184, 0.7)', 'rgba(42, 169, 160, 0.75)', 'rgba(15, 93, 100, 0.9)'],
+                backgroundColor: ['rgba(148, 163, 184, 0.7)', 'rgba(34, 184, 176, 0.75)', 'rgba(14, 42, 87, 0.9)'],
                 borderRadius: 6,
               },
             ],
@@ -664,7 +664,7 @@ function PartnerAccessPage() {
                   maxWidth: '220px',
                   borderRadius: '16px',
                   overflow: 'hidden',
-                  border: '1px solid rgba(220, 227, 232, 0.8)',
+                  border: '1px solid rgba(232, 237, 242, 0.8)',
                   boxShadow: 'var(--shadow)',
                   cursor: 'pointer',
                 }}
@@ -700,7 +700,7 @@ function PartnerAccessPage() {
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'rgba(8, 36, 41, 0.8)',
+            background: 'rgba(5, 14, 30, 0.8)',
             display: 'grid',
             placeItems: 'center',
             padding: '2rem',
@@ -723,7 +723,7 @@ function PartnerAccessPage() {
               height: '32px',
               borderRadius: '999px',
               border: '1px solid rgba(255, 255, 255, 0.35)',
-              background: 'rgba(8, 36, 41, 0.65)',
+              background: 'rgba(5, 14, 30, 0.65)',
               color: '#fff',
               fontSize: '18px',
               fontWeight: 700,

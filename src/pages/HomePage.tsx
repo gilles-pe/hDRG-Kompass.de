@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { getBaseUrl } from '../utils/baseUrl'
+import { useScrollReveal } from '../hooks/useScrollReveal'
 
 const fachbereiche = [
   { id: 'kardiologie', title: 'Kardiologie', subtitle: 'PCI & Schrittmacher' },
@@ -14,6 +15,7 @@ const fachbereiche = [
 ]
 
 function HomePage() {
+  useScrollReveal()
   const baseUrl = getBaseUrl()
   const logoUrl = `${baseUrl}hdrg_kompass.svg`
   const heroImageUrl = `${baseUrl}Ambulantes%20OP%20Zentrum%20Hero%20Pic.jpg`
@@ -24,7 +26,7 @@ function HomePage() {
           <div
             className="hero-bleed-image"
             style={{
-              backgroundImage: `linear-gradient(135deg, rgba(10, 68, 73, 0.55), rgba(42, 169, 160, 0.3)), url('${heroImageUrl}')`,
+              backgroundImage: `linear-gradient(135deg, rgba(9, 26, 55, 0.55), rgba(34, 184, 176, 0.3)), url('${heroImageUrl}')`,
             }}
           />
           <div className="container hero-bleed-content">
@@ -84,16 +86,22 @@ function HomePage() {
               Direkt zu den passenden Fachbereichen mit hDRG-Eingriffen, Pauschalen und Checklisten.
             </p>
           </div>
-          <div className="quick-grid">
-            {fachbereiche.map((fachbereich) => (
+          <div className="quick-list" data-reveal-group>
+            {fachbereiche.map((fachbereich, index) => (
               <Link
-                className="quick-card"
+                className="quick-list-item"
                 to={`/fachbereiche#${fachbereich.id}`}
                 key={fachbereich.title}
+                data-reveal
               >
-                <h3>{fachbereich.title}</h3>
-                <p>{fachbereich.subtitle}</p>
-                <span className="quick-cta">Öffnen</span>
+                <span className="quick-list-index">{String(index + 1).padStart(2, '0')}</span>
+                <span className="quick-list-text">
+                  <h3 className="quick-list-title">{fachbereich.title}</h3>
+                  <span className="quick-list-subtitle">{fachbereich.subtitle}</span>
+                </span>
+                <span className="quick-list-arrow" aria-hidden="true">
+                  →
+                </span>
               </Link>
             ))}
           </div>
@@ -101,8 +109,8 @@ function HomePage() {
       </section>
 
       <section className="section">
-        <div className="container split">
-          <div>
+        <div className="container split" data-reveal-group>
+          <div data-reveal>
             <h2>Warum Hybrid-DRG jetzt relevant ist</h2>
             <p>
               Die Krankenhausreform und die neuen hDRG-Pauschalen verlagern bis 2030 rund 2 Millionen
@@ -113,7 +121,7 @@ function HomePage() {
               Materialmanagement und OP-Organisation.
             </p>
           </div>
-          <div className="card">
+          <div className="card" data-reveal>
             <h3>Was Sie hier finden</h3>
             <p>Übersichtliche Fakten, Fachbereiche, Patientenvorteile und praktische Checklisten.</p>
             <Link className="text-link" to="/hybrid-drg">
@@ -124,16 +132,16 @@ function HomePage() {
       </section>
 
       <section className="section muted">
-        <div className="container grid-3">
-          <div className="info-tile">
+        <div className="container grid-3" data-reveal-group>
+          <div className="info-tile" data-reveal>
             <h3>Praxis-Perspektive</h3>
             <p>Wie sich hDRG auf Organisation, Ressourcen und Abläufe auswirkt.</p>
           </div>
-          <div className="info-tile">
+          <div className="info-tile" data-reveal>
             <h3>Patientenvorteile</h3>
             <p>Weniger Klinikaufenthalt, planbare Abläufe, vertraute Versorgung.</p>
           </div>
-          <div className="info-tile">
+          <div className="info-tile" data-reveal>
             <h3>Fachbereiche</h3>
             <p>12 Fachbereiche mit hDRG-Eingriffen, Pauschalen und Checklisten.</p>
           </div>

@@ -1,6 +1,8 @@
 import { getBaseUrl } from '../utils/baseUrl'
+import { useScrollReveal } from '../hooks/useScrollReveal'
 
 function HybridDrgPage() {
+  useScrollReveal()
   const baseUrl = getBaseUrl()
   const principleImage = `${baseUrl}hDRGPrinzip.jpg`
 
@@ -16,8 +18,8 @@ function HybridDrgPage() {
             Leistung erbracht wird. Das Ziel nach § 115f SGB V ist klar: Ambulante Potenziale sollen
             konsequent gestärkt und Planungssicherheit geschaffen werden.
           </p>
-          <div className="principle-grid">
-            <div className="callout">
+          <div className="principle-grid" data-reveal-group>
+            <div className="callout" data-reveal>
               <h3>Die Konsequenz für die Praxis</h3>
               <p>
                 Es gilt eine einfache Formel: Eine einheitliche Pauschale pro Fall. Damit verlagert sich
@@ -25,7 +27,7 @@ function HybridDrgPage() {
                 Sachkosten-Kalkulation und eine lückenlose Dokumentation.
               </p>
             </div>
-            <div className="principle-image">
+            <div className="principle-image" data-reveal>
               <img src={principleImage} alt="hDRG Prinzip" />
             </div>
           </div>
@@ -33,8 +35,8 @@ function HybridDrgPage() {
       </section>
 
       <section className="section muted">
-        <div className="container grid-2">
-          <div className="card">
+        <div className="container grid-2" data-reveal-group>
+          <div className="card" data-reveal>
             <h2>Wie das Prinzip funktioniert</h2>
             <h3>Der Katalog gibt den Takt vor</h3>
             <p>
@@ -43,7 +45,7 @@ function HybridDrgPage() {
               fixiert, egal ob der Patient ambulant oder stationär versorgt wird.
             </p>
           </div>
-          <div className="card">
+          <div className="card" data-reveal>
             <h2>Alles in einer Pauschale</h2>
             <p>
               Die Vergütung deckt sämtliche Leistungen ab, die im direkten Zusammenhang mit dem Eingriff
@@ -56,8 +58,8 @@ function HybridDrgPage() {
       </section>
 
       <section className="section">
-        <div className="container grid-2">
-          <div>
+        <div className="container grid-2" data-reveal-group>
+          <div data-reveal>
             <h2>Was das für das Team bedeutet</h2>
             <h3>Für Ärztinnen & Ärzte: Planungssicherheit</h3>
             <p>
@@ -67,7 +69,7 @@ function HybridDrgPage() {
               strukturierte Nachsorge.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h2>&nbsp;</h2>
             <h3>Für Praxisteam & MFA: Prozess-Exzellenz</h3>
             <p>

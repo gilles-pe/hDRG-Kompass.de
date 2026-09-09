@@ -452,7 +452,7 @@ function FachbereichePage() {
             <div
               className="hero-photo"
               style={{
-                backgroundImage: `linear-gradient(135deg, rgba(15, 93, 100, 0.22), rgba(42, 169, 160, 0.12)), url('${doctorImage}')`,
+                backgroundImage: `linear-gradient(135deg, rgba(14, 42, 87, 0.22), rgba(34, 184, 176, 0.12)), url('${doctorImage}')`,
               }}
             />
           </div>
