@@ -1,4 +1,5 @@
 import Accordion, { type AccordionItem } from '../components/Accordion'
+import AiImageBadge from '../components/AiImageBadge'
 import HybridDrgCalculator from '../components/HybridDrgCalculator'
 import { hybridDrgProcedures, type HybridDrgProcedure } from '../data/hybridDrgProcedures'
 
@@ -454,7 +455,9 @@ function FachbereichePage() {
               style={{
                 backgroundImage: `linear-gradient(135deg, rgba(14, 42, 87, 0.22), rgba(34, 184, 176, 0.12)), url('${doctorImage}')`,
               }}
-            />
+            >
+              <AiImageBadge />
+            </div>
           </div>
         </div>
       </section>

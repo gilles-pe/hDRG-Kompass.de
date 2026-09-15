@@ -1,5 +1,6 @@
 import { getBaseUrl } from '../utils/baseUrl'
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import AiImageBadge from '../components/AiImageBadge'
 
 function HybridDrgPage() {
   useScrollReveal()
@@ -29,6 +30,7 @@ function HybridDrgPage() {
             </div>
             <div className="principle-image" data-reveal>
               <img src={principleImage} alt="hDRG Prinzip" />
+              <AiImageBadge />
             </div>
           </div>
         </div>

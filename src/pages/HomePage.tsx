@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import AiImageBadge from '../components/AiImageBadge'
 import { getBaseUrl } from '../utils/baseUrl'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
@@ -29,6 +30,7 @@ function HomePage() {
               backgroundImage: `linear-gradient(135deg, rgba(9, 26, 55, 0.55), rgba(34, 184, 176, 0.3)), url('${heroImageUrl}')`,
             }}
           />
+          <AiImageBadge />
           <div className="container hero-bleed-content">
             <div className="home-hero-layout">
               <div className="hero-glass">

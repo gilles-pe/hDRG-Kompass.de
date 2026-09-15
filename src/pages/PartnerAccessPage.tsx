@@ -14,6 +14,7 @@ import {
 } from 'chart.js'
 import type { Plugin } from 'chart.js'
 import { Link } from 'react-router-dom'
+import AiImageBadge from '../components/AiImageBadge'
 
 Chart.register(
   BarController,
@@ -378,6 +379,7 @@ function PartnerAccessPage() {
           }}
         />
         <div className="partner-hero-overlay" />
+        <AiImageBadge />
         <div className="container partner-hero-content">
           <span className="eyebrow">Partner Access</span>
           <h1>
@@ -661,6 +663,7 @@ function PartnerAccessPage() {
                   }
                 }}
                 style={{
+                  position: 'relative',
                   maxWidth: '220px',
                   borderRadius: '16px',
                   overflow: 'hidden',
@@ -675,6 +678,7 @@ function PartnerAccessPage() {
                   alt="DocEase Teaser"
                   style={{ width: '100%', display: 'block' }}
                 />
+                <AiImageBadge />
               </div>
               <ul style={{ margin: 0, paddingLeft: '1.2rem' }}>
                 <li>gehärteter Chatassistent, DSVGO konform</li>
@@ -733,17 +737,21 @@ function PartnerAccessPage() {
           >
             ×
           </button>
-          <img
-            src={docEaseTeaserUrl}
-            alt="DocEase Teaser groß"
-            style={{
-              maxWidth: 'min(1100px, 92vw)',
-              maxHeight: '80vh',
-              borderRadius: '18px',
-              boxShadow: '0 30px 70px rgba(0, 0, 0, 0.35)',
-              background: '#fff',
-            }}
-          />
+          <div style={{ position: 'relative', maxWidth: 'min(1100px, 92vw)', maxHeight: '80vh' }}>
+            <img
+              src={docEaseTeaserUrl}
+              alt="DocEase Teaser groß"
+              style={{
+                display: 'block',
+                maxWidth: 'min(1100px, 92vw)',
+                maxHeight: '80vh',
+                borderRadius: '18px',
+                boxShadow: '0 30px 70px rgba(0, 0, 0, 0.35)',
+                background: '#fff',
+              }}
+            />
+            <AiImageBadge />
+          </div>
         </div>
       )}
     </div>
